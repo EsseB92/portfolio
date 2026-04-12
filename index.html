@@ -9,8 +9,8 @@
   <title>Bertrand Sudre — Développeur Web Freelance | Erdus</title>
   <meta name="description" content="Bertrand Sudre, développeur web freelance spécialisé en création de sites sur mesure, SEO, performance et sécurité. Disponible pour vos projets web." />
   <meta name="keywords" content="développeur web freelance, création site web, SEO, Next.js, React, WordPress, PHP, Symfony, Bertrand Sudre, Erdus" />
-  <meta name="google-site-verification" content="5vxMfhG3rHuingxgPWlWE_AZnx6MaegSPdQR0_1isuI" />
   <meta name="author" content="Bertrand Sudre" />
+  <meta name="google-site-verification" content="5vxMfhG3rHuingxgPWlWE_AZnx6MaegSPdQR0_1isuI" />
   <meta name="geo.region" content="FR-IDF" />
   <meta name="geo.placename" content="Bois-Colombes, Île-de-France" />
   <meta name="geo.position" content="48.9167;2.3167" />
@@ -29,6 +29,9 @@
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:locale:alternate" content="en_GB" />
   <meta property="og:image" content="https://erdus.fr/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Bertrand Sudre — Développeur Web Freelance" />
 
   <!-- ═══ Twitter Card ═══ -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -519,10 +522,24 @@
     ════════════════════════════════ */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 80px;
+      grid-template-columns: 220px 1fr 1.15fr;
+      gap: 56px;
       align-items: start;
     }
+    .about-photo {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      filter: grayscale(20%);
+      transition: filter .4s;
+    }
+    .about-photo img:hover { filter: grayscale(0%); }
 
     .about-bio {
       position: sticky;
@@ -621,28 +638,11 @@
     .proj-thumb-bg {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      display: block;
       transition: transform .6s cubic-bezier(.16,1,.3,1);
     }
     .proj-card:hover .proj-thumb-bg { transform: scale(1.05); }
-
-    .proj-thumb-bg.p1 { background: linear-gradient(140deg, #0D1117 0%, #1B2637 55%, #0F1923 100%); }
-    .proj-thumb-bg.p2 { background: linear-gradient(140deg, #0A0520 0%, #1C0A3A 55%, #0D1020 100%); }
-    .proj-thumb-bg.p3 { background: linear-gradient(140deg, #0F1A10 0%, #1B3020 55%, #0C2010 100%); }
-    .proj-thumb-bg.p4 { background: linear-gradient(140deg, #1A1510 0%, #2C2012 55%, #141510 100%); }
-
-    .proj-monogram {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--f-display);
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      letter-spacing: .08em;
-      color: rgba(242, 237, 229, .12);
-      user-select: none;
-    }
 
     /* Thin accent bar bottom of thumb */
     .proj-thumb::after {
@@ -1114,8 +1114,9 @@
        RESPONSIVE
     ════════════════════════════════ */
     @media (max-width: 960px) {
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
       .about-bio   { position: static; }
+      .about-photo { position: static; max-width: 160px; }
       .projects-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .form-row     { grid-template-columns: 1fr; }
@@ -1235,6 +1236,14 @@
         </div>
 
         <div class="about-grid">
+          <div class="about-photo rv">
+            <img src="/profile.webp"
+                 alt="Bertrand Sudre — Développeur Web Freelance"
+                 width="220" height="220"
+                 loading="eager"
+                 decoding="async" />
+          </div>
+
           <div class="about-bio rv">
             <p data-fr="Développeur web expérimenté, je crée des <strong>solutions en ligne innovantes et performantes</strong>. Je conçois des sites et applications alliant fonctionnalité, design attrayant et performance optimale."
                data-en="Experienced web developer, I build <strong>innovative and high-performance online solutions</strong>. I design sites and applications combining functionality, attractive design, and optimal performance.">
@@ -1520,8 +1529,12 @@
           <!-- Erdus -->
           <article class="proj-card rv" data-d="1">
             <div class="proj-thumb">
-              <div class="proj-thumb-bg p1"></div>
-              <div class="proj-monogram" aria-hidden="true">ERDUS</div>
+              <img src="/erdus.webp"
+                   alt="Capture du site Erdus — portfolio développeur web"
+                   width="1280" height="720"
+                   loading="lazy"
+                   decoding="async"
+                   class="proj-thumb-bg" />
             </div>
             <div class="proj-body">
               <div class="proj-tags">
@@ -1549,8 +1562,12 @@
           <!-- 3D Portfolio -->
           <article class="proj-card rv" data-d="2">
             <div class="proj-thumb">
-              <div class="proj-thumb-bg p2"></div>
-              <div class="proj-monogram" aria-hidden="true">3D</div>
+              <img src="/3d-portfolio.webp"
+                   alt="Capture du projet 3D Portfolio — Three.js et React"
+                   width="1280" height="720"
+                   loading="lazy"
+                   decoding="async"
+                   class="proj-thumb-bg" />
             </div>
             <div class="proj-body">
               <div class="proj-tags">
@@ -1578,8 +1595,12 @@
           <!-- Manufacturist -->
           <article class="proj-card rv" data-d="3">
             <div class="proj-thumb">
-              <div class="proj-thumb-bg p3"></div>
-              <div class="proj-monogram" aria-hidden="true">MFT</div>
+              <img src="/manufacturist.webp"
+                   alt="Capture du site Manufacturist — e-commerce WordPress"
+                   width="1280" height="720"
+                   loading="lazy"
+                   decoding="async"
+                   class="proj-thumb-bg" />
             </div>
             <div class="proj-body">
               <div class="proj-tags">
@@ -1603,8 +1624,12 @@
           <!-- UTLB -->
           <article class="proj-card rv" data-d="4">
             <div class="proj-thumb">
-              <div class="proj-thumb-bg p4"></div>
-              <div class="proj-monogram" aria-hidden="true">UTLB</div>
+              <img src="/op-utlb.webp"
+                   alt="Capture du site Observatoire du Paysage UTLB — blog WordPress"
+                   width="1280" height="720"
+                   loading="lazy"
+                   decoding="async"
+                   class="proj-thumb-bg" />
             </div>
             <div class="proj-body">
               <div class="proj-tags">
