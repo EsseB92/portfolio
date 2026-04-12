@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
+  <div id="cur-dot"  aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"></div>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
 
   <nav id="navbar" role="navigation" aria-label="Navigation principale">
@@ -115,6 +117,20 @@
       </div>
     </div>
   </footer>
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script>
+    const dot  = document.getElementById('cur-dot');
+    const ring = document.getElementById('cur-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+    (function raf() {
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(raf);
+    })();
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
