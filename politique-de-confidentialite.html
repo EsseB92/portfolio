@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — Erdus</title>
+  <meta name="description" content="Politique de confidentialité du site erdus.fr — Bertrand Sudre, développeur web freelance." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://erdus.fr/politique-de-confidentialite" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #05060A;
+      --surface: #0E1016;
+      --accent:  #C8F135;
+      --text:    #F2EDE5;
+      --muted:   #6B6A70;
+      --border:  rgba(242, 237, 229, 0.08);
+      --f-display: 'Syne', sans-serif;
+      --f-mono:    'JetBrains Mono', monospace;
+      --f-body:    'Instrument Sans', sans-serif;
+      --nav-h: 72px;
+      --wrap:  860px;
+      --gutter: clamp(20px, 5vw, 48px);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--f-body); font-size: 16px; line-height: 1.65; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    .skip-link {
+      position: absolute; top: -120%; left: 16px;
+      background: var(--accent); color: var(--bg);
+      font-family: var(--f-mono); font-size: .8rem; font-weight: 600;
+      padding: 8px 20px; border-radius: 0 0 6px 6px; z-index: 10000;
+      transition: top .2s; text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: var(--nav-h); display: flex; align-items: center;
+      background: rgba(5, 6, 10, .92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { font-family: var(--f-display); font-size: 1.4rem; font-weight: 800; letter-spacing: .06em; color: var(--text); text-decoration: none; }
+    .nav-logo em { color: var(--accent); font-style: normal; }
+    .nav-back {
+      font-family: var(--f-mono); font-size: .75rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: 8px; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    main { max-width: var(--wrap); margin: 0 auto; padding: calc(var(--nav-h) + 64px) var(--gutter) 80px; }
+
+    .page-eyebrow {
+      font-family: var(--f-mono); font-size: .7rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .page-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+
+    h1 { font-family: var(--f-display); font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; margin-bottom: 12px; }
+    .last-update { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); margin-bottom: 48px; }
+
+    .legal-section { margin-bottom: 48px; border-top: 1px solid var(--border); padding-top: 32px; }
+    .legal-section:first-of-type { border-top: none; padding-top: 0; }
+
+    h2 { font-family: var(--f-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; }
+    h3 { font-family: var(--f-mono); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; margin-top: 24px; }
+    p { color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 600; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { color: var(--muted); padding-left: 20px; margin-bottom: 12px; line-height: 1.8; }
+    li { margin-bottom: 4px; }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .highlight-box p { margin: 0; font-size: .9rem; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .foot-copy { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .05em; color: var(--muted); margin: 0; }
+    .foot-nav { display: flex; gap: 24px; align-items: center; list-style: none; }
+    .foot-nav li a { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .05em; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .foot-nav li a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Erdus — Accueil">ERDU<em>S</em></a>
+        <a href="/" class="nav-back">← Retour</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="page-eyebrow">Légal</div>
+    <h1>Politique de confidentialité</h1>
+    <p class="last-update">Dernière mise à jour : avril 2026</p>
+
+    <div class="legal-section">
+      <h2>Qui sommes-nous ?</h2>
+      <p>Ce site est édité par <strong>Bertrand Sudre</strong>, développeur web freelance, accessible à l'adresse <a href="https://erdus.fr">https://erdus.fr</a>.</p>
+      <p>Contact : <a href="mailto:contact@erdus.fr">contact@erdus.fr</a></p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Données collectées</h2>
+
+      <h3>Formulaire de contact</h3>
+      <p>Lorsque vous utilisez le formulaire de contact, les données suivantes sont collectées :</p>
+      <ul>
+        <li><strong>Nom</strong> — pour personnaliser la réponse</li>
+        <li><strong>Adresse email</strong> — pour vous répondre</li>
+        <li><strong>Sujet et message</strong> — pour traiter votre demande</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Ces données sont utilisées <strong>uniquement pour répondre à votre demande</strong>. Elles ne sont ni stockées en base de données, ni transmises à des tiers, ni utilisées à des fins commerciales.</p>
+      </div>
+
+      <h3>Données de navigation</h3>
+      <p>Ce site ne dispose d'<strong>aucun outil de tracking</strong> (Google Analytics, Hotjar, pixels publicitaires, etc.). Aucune donnée de navigation n'est collectée.</p>
+
+      <h3>Cookies</h3>
+      <p>Ce site n'utilise <strong>aucun cookie</strong> de traçage, publicitaire ou analytique. Seules les polices Google Fonts sont chargées depuis des serveurs externes de Google.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Base légale du traitement</h2>
+      <p>Le traitement des données du formulaire de contact repose sur votre <strong>consentement explicite</strong> (article 6.1.a du RGPD) : en soumettant le formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Durée de conservation</h2>
+      <p>Les emails reçus via le formulaire de contact sont conservés <strong>le temps nécessaire au traitement de votre demande</strong>, puis supprimés dans un délai maximal de 12 mois.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> — obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> — corriger vos données inexactes</li>
+        <li><strong>Droit à l'effacement</strong> — demander la suppression de vos données</li>
+        <li><strong>Droit d'opposition</strong> — vous opposer au traitement de vos données</li>
+        <li><strong>Droit à la portabilité</strong> — recevoir vos données dans un format structuré</li>
+      </ul>
+      <p>Pour exercer ces droits : <a href="mailto:contact@erdus.fr">contact@erdus.fr</a></p>
+      <p>En cas de réclamation, vous pouvez contacter la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Sécurité des données</h2>
+      <p>Ce site met en oeuvre plusieurs mesures techniques pour protéger vos données :</p>
+      <ul>
+        <li>Connexion chiffrée via HTTPS (TLS)</li>
+        <li>Fichiers sensibles protégés côté serveur</li>
+        <li>En-têtes de sécurité HTTP (CSP, HSTS, X-Frame-Options)</li>
+        <li>Protection contre les soumissions abusives (rate limiting)</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>Services tiers</h2>
+      <p><strong>Google Fonts</strong> — les polices sont chargées depuis les serveurs de Google. Google peut collecter des données de connexion (adresse IP). Consultez la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Modifications</h2>
+      <p>Cette politique de confidentialité peut être mise à jour ponctuellement. La date de dernière mise à jour est indiquée en haut de cette page.</p>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <div class="foot-inner">
+        <p class="foot-copy">© <span id="yr">2026</span> — Bertrand Sudre / Erdus</p>
+        <nav aria-label="Liens légaux">
+          <ul class="foot-nav">
+            <li><a href="/mentions-legales">Mentions légales</a></li>
+            <li><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
