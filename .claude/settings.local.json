@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.linkedin.com)",
-      "WebFetch(domain:erdus.fr)"
+      "WebFetch(domain:erdus.fr)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(npm run *)",
+      "PowerShell(Start-Sleep -Seconds 3; $r = Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing; $r.StatusCode; $r.Headers | Format-List)",
+      "PowerShell(npm audit *)"
     ]
   }
 }

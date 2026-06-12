@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Bertrand Sudre (Erdus)
 
-## Getting Started
+Portfolio de développeur web freelance construit avec **Next.js 16**, **React 19**, **TypeScript** et **Tailwind CSS 4**.
 
-First, run the development server:
+## Démarrage
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # développement → http://localhost:3000
+npm run build  # build de production
+npm run start  # serveur de production
+npm run lint   # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Modifier le contenu
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tout le contenu (identité, services, compétences, expériences, projets, FAQ, liens) est centralisé dans **`src/lib/data.ts`**. Modifier ce fichier met à jour le site, les métadonnées SEO et les données structurées en même temps.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+L'URL canonique du site est définie par `SITE_URL` dans ce même fichier.
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+| Fichier | Rôle |
+|---|---|
+| `src/lib/data.ts` | Source unique de vérité du contenu |
+| `src/app/layout.tsx` | Métadonnées SEO, Open Graph, JSON-LD (Person, WebSite, ProfilePage) |
+| `src/app/page.tsx` | Page d'accueil (héro, services, compétences, parcours, projets, FAQ, contact) + JSON-LD FAQPage |
+| `src/app/opengraph-image.tsx` | Image Open Graph générée au build |
+| `src/app/sitemap.ts`, `robots.ts`, `manifest.ts` | Fichiers SEO générés par Next |
+| `src/proxy.ts` | CSP stricte avec nonce unique par requête |
+| `next.config.ts` | En-têtes de sécurité statiques (HSTS, X-Frame-Options, Permissions-Policy…) |
+| `public/llms.txt` | Résumé structuré pour les moteurs IA (GEO) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sécurité
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **CSP stricte** : `script-src 'self' 'nonce-…' 'strict-dynamic'` — un nonce unique est généré à chaque requête dans `src/proxy.ts`, ce qui impose le rendu dynamique de la page (lecture de `headers()` dans le layout). Aucun script inline non signé ne peut s'exécuter.
+- HSTS (préchargeable), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP/CORP.
+- `X-Powered-By` désactivé, dépendances auditées (0 vulnérabilité, override `postcss` en place).
 
-## Deploy on Vercel
+## SEO & GEO
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Métadonnées complètes (title template, canonical, Open Graph, Twitter Card, robots).
+- Données structurées schema.org : `Person`, `WebSite`, `ProfilePage`, `FAQPage`.
+- `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, image OG générée au build.
+- `llms.txt` pour les moteurs de réponse IA (ChatGPT, Claude, Perplexity…).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Accessibilité
+
+- Lien d'évitement, landmarks sémantiques, hiérarchie de titres stricte, contrastes AA.
+- `prefers-reduced-motion` respecté (animations désactivées), `prefers-color-scheme` (thème clair/sombre automatique, sans JavaScript).
+- Contenu intégralement visible sans JavaScript (les animations de scroll ne s'activent que si JS est présent).
+
+## Déploiement
+
+Le site nécessite un hébergement Node.js (Vercel, Netlify, VPS…) car la CSP à nonce impose un rendu dynamique. Sur Vercel : pousser le dépôt et importer le projet, aucune configuration supplémentaire.

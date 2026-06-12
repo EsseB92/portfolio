@@ -1,0 +1,40 @@
+# Erdus — Bertrand Sudre
+
+> Bertrand Sudre est développeur web freelance basé à Bois-Colombes (Île-de-France, France). Il conçoit des sites et applications web sur mesure : rapides, sécurisés, accessibles et optimisés pour le référencement (SEO). Il travaille à distance avec des clients partout en France.
+
+## Services
+
+- Développement web sur mesure : sites vitrines, e-commerce, blogs et applications web, du cahier des charges au déploiement
+- SEO et visibilité : optimisation on-page, contenu structuré, données enrichies (schema.org), amélioration technique
+- Performance web : Core Web Vitals, scores PageSpeed Insights optimisés
+- Sécurité : HTTPS, en-têtes de sécurité (CSP, HSTS), pare-feu applicatifs, durcissement WordPress
+- Responsive design et accessibilité (RGAA / WCAG)
+- Automatisation et IA : workflows n8n et Make, intégration d'API IA
+
+## Compétences techniques
+
+- Frontend : Next.js, React, TypeScript, Tailwind CSS, Three.js
+- Backend et CMS : PHP, Symfony, Twig, WordPress, Elementor
+- Outils : Docker, GitHub, Figma, Notion
+
+## Expérience
+
+- Depuis juillet 2025 : Coordinateur de production digitale chez Edreams Factory (alternance)
+- Depuis octobre 2023 : Développeur web freelance (Erdus)
+- 2019–2021 : Assistant chef de projet, Ministère des Armées
+- 2017–2019 : Gestionnaire administratif et informatique, GMF Assurances
+- 2015–2016 : Administrateur SharePoint, PSA Peugeot-Citroën
+
+## Projets
+
+- Erdus (https://erdus.fr) : portfolio Next.js + TypeScript, SEO multilingue
+- Portfolio 3D : expérience immersive Three.js
+- Manufacturist : e-commerce WordPress optimisé performance
+- Observatoire du Paysage UTLB : blog WordPress sécurisé avec newsletter
+
+## Contact
+
+- Site : https://erdus.fr
+- GitHub : https://github.com/EsseB92
+- LinkedIn : https://www.linkedin.com/in/bertrand-sudre/
+- Malt : https://www.malt.fr/profile/bertrandsudre
