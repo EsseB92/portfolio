@@ -14,6 +14,7 @@ const navItems = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -24,6 +25,25 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // Scroll-spy : met en évidence la section actuellement visible
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <nav
@@ -32,7 +52,7 @@ export default function Header() {
       >
         <a
           href="#"
-          className="font-mono text-lg font-bold tracking-tight"
+          className="font-mono text-lg font-bold tracking-tight transition-colors hover:text-accent"
           aria-label={`${identity.brand} — retour en haut de page`}
         >
           {identity.brand}
@@ -46,7 +66,8 @@ export default function Header() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+                aria-current={activeId === item.href.slice(1) || undefined}
+                className="nav-link text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -56,7 +77,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-border md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-border transition-colors hover:border-accent md:hidden"
           aria-expanded={open}
           aria-controls="menu-mobile"
           onClick={() => setOpen((v) => !v)}

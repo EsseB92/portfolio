@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+import ContactForm from "@/components/ContactForm";
 import Icon from "@/components/Icon";
 import {
   SITE_URL,
@@ -21,45 +23,77 @@ const faqJsonLd = {
   })),
 };
 
+const stagger = (i: number) =>
+  ({ "--stagger": Math.min(i, 6) }) as CSSProperties;
+
 export default function Home() {
   return (
     <>
       {/* Héro */}
       <section
         aria-labelledby="titre-hero"
-        className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28"
+        className="relative overflow-hidden"
       >
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-sm text-muted">
-          <span
-            aria-hidden="true"
-            className="h-2 w-2 rounded-full bg-green-500"
-          />
-          {identity.availability}
-        </p>
-        <h1
-          id="titre-hero"
-          className="max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-6xl"
-        >
-          {identity.name},{" "}
-          <span className="text-accent">{identity.jobTitle.toLowerCase()}</span>
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted text-pretty">
-          {identity.tagline} Basé à {identity.location}, je travaille à
-          distance avec des clients partout en France.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <a
-            href="#projets"
-            className="rounded-lg bg-accent px-6 py-3 font-semibold text-accent-contrast transition-opacity hover:opacity-90"
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <div className="blob absolute -top-32 -left-32 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
+          <div className="blob blob-alt absolute top-1/4 -right-24 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+        </div>
+        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
+          <p
+            style={stagger(0)}
+            className="hero-enter mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-sm text-muted"
           >
-            Voir mes projets
-          </a>
-          <a
-            href="#contact"
-            className="rounded-lg border border-border bg-surface px-6 py-3 font-semibold transition-colors hover:border-accent"
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 animate-pulse rounded-full bg-green-500"
+            />
+            {identity.availability}
+          </p>
+          <h1
+            id="titre-hero"
+            style={stagger(1)}
+            className="hero-enter max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-6xl"
           >
-            Me contacter
-          </a>
+            {identity.name},{" "}
+            <span className="text-accent">
+              {identity.jobTitle.toLowerCase()}
+            </span>
+          </h1>
+          <p
+            style={stagger(2)}
+            className="hero-enter mt-6 max-w-2xl text-lg text-muted text-pretty"
+          >
+            {identity.tagline} Basé à {identity.location}, je travaille à
+            distance avec des clients partout en France.
+          </p>
+          <div style={stagger(3)} className="hero-enter mt-8 flex flex-wrap gap-4">
+            <a
+              href="#projets"
+              className="group flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-contrast transition-[opacity,transform] hover:opacity-90 active:scale-[0.98]"
+            >
+              Voir mes projets
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform group-hover:translate-y-0.5"
+              >
+                <path d="M12 5v14m0 0 6-6m-6 6-6-6" />
+              </svg>
+            </a>
+            <a
+              href="#contact"
+              className="rounded-lg border border-border bg-surface px-6 py-3 font-semibold transition-[border-color,transform] hover:border-accent active:scale-[0.98]"
+            >
+              Me contacter
+            </a>
+          </div>
         </div>
       </section>
 
@@ -81,10 +115,11 @@ export default function Home() {
             grandir votre présence en ligne.
           </p>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+            {services.map((service, i) => (
               <li
                 key={service.title}
-                className="reveal rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent"
+                style={stagger(i)}
+                className="reveal card-lift rounded-xl border border-border bg-surface p-6 hover:border-accent"
               >
                 <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent-soft text-accent">
                   <Icon name={service.icon} />
@@ -117,10 +152,11 @@ export default function Home() {
             backend et des outils éprouvés pour livrer vite et bien.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {skills.map((group) => (
+            {skills.map((group, i) => (
               <div
                 key={group.category}
-                className="reveal rounded-xl border border-border bg-surface p-6"
+                style={stagger(i)}
+                className="reveal card-lift rounded-xl border border-border bg-surface p-6"
               >
                 <h3 className="font-mono text-sm font-semibold tracking-wide text-accent uppercase">
                   {group.category}
@@ -129,7 +165,7 @@ export default function Home() {
                   {group.items.map((skill) => (
                     <li
                       key={skill}
-                      className="rounded-full border border-border px-3 py-1 text-sm"
+                      className="rounded-full border border-border px-3 py-1 text-sm transition-colors hover:border-accent hover:text-accent"
                     >
                       {skill}
                     </li>
@@ -159,9 +195,10 @@ export default function Home() {
             administration de systèmes et développement web.
           </p>
           <ol className="mt-10 border-l-2 border-border">
-            {experiences.map((exp) => (
+            {experiences.map((exp, i) => (
               <li
                 key={`${exp.company}-${exp.startDate}`}
+                style={stagger(i)}
                 className="reveal relative pb-10 pl-8 last:pb-0"
               >
                 <span
@@ -199,10 +236,11 @@ export default function Home() {
             site e-commerce optimisé.
           </p>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2">
-            {projects.map((project) => (
+            {projects.map((project, i) => (
               <li
                 key={project.title}
-                className="reveal flex flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent"
+                style={stagger(i)}
+                className="reveal card-lift flex flex-col rounded-xl border border-border bg-surface p-6 hover:border-accent"
               >
                 <h3 className="text-xl font-semibold">
                   {project.url ? (
@@ -249,10 +287,11 @@ export default function Home() {
             Questions fréquentes
           </h2>
           <div className="mt-10 space-y-4">
-            {faq.map((item) => (
+            {faq.map((item, i) => (
               <details
                 key={item.question}
-                className="reveal group rounded-xl border border-border bg-surface"
+                style={stagger(i)}
+                className="reveal group rounded-xl border border-border bg-surface transition-colors hover:border-accent/50"
               >
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold [&::-webkit-details-marker]:hidden">
                   <span className="flex items-center justify-between gap-4">
@@ -287,32 +326,53 @@ export default function Home() {
         aria-labelledby="titre-contact"
         className="border-t border-border"
       >
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28">
-          <h2
-            id="titre-contact"
-            className="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
-          >
-            Un projet en tête&nbsp;?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted text-pretty">
-            Parlons-en. Décrivez-moi votre besoin et je vous répondrai sous 48
-            heures avec une première analyse et une estimation.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              href={`mailto:${identity.email}`}
-              className="rounded-lg bg-accent px-6 py-3 font-semibold text-accent-contrast transition-opacity hover:opacity-90"
+        <div className="mx-auto grid max-w-5xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[2fr_3fr]">
+          <div>
+            <h2
+              id="titre-contact"
+              className="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
             >
-              {identity.email}
-            </a>
-            <a
-              href={links.malt}
-              rel="noopener noreferrer"
-              target="_blank"
-              className="rounded-lg border border-border bg-surface px-6 py-3 font-semibold transition-colors hover:border-accent"
-            >
-              Me retrouver sur Malt
-            </a>
+              Un projet en tête&nbsp;?
+            </h2>
+            <p className="mt-4 max-w-xl text-muted text-pretty">
+              Parlons-en. Décrivez-moi votre besoin et je vous répondrai sous
+              48 heures avec une première analyse et une estimation.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm">
+              <li>
+                <a
+                  href={`mailto:${identity.email}`}
+                  className="font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  {identity.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={links.malt}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  Me retrouver sur Malt
+                  <span className="sr-only"> (nouvel onglet)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={links.linkedin}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  LinkedIn
+                  <span className="sr-only"> (nouvel onglet)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="reveal">
+            <ContactForm />
           </div>
         </div>
       </section>

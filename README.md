@@ -27,6 +27,8 @@ L'URL canonique du site est définie par `SITE_URL` dans ce même fichier.
 | `src/app/page.tsx` | Page d'accueil (héro, services, compétences, parcours, projets, FAQ, contact) + JSON-LD FAQPage |
 | `src/app/opengraph-image.tsx` | Image Open Graph générée au build |
 | `src/app/sitemap.ts`, `robots.ts`, `manifest.ts` | Fichiers SEO générés par Next |
+| `src/app/actions.ts` | Server Action du formulaire de contact (validation, honeypot, rate-limit, envoi Resend) |
+| `src/components/ContactForm.tsx` | Formulaire de contact accessible (fonctionne aussi sans JavaScript) |
 | `src/proxy.ts` | CSP stricte avec nonce unique par requête |
 | `next.config.ts` | En-têtes de sécurité statiques (HSTS, X-Frame-Options, Permissions-Policy…) |
 | `public/llms.txt` | Résumé structuré pour les moteurs IA (GEO) |
@@ -36,6 +38,17 @@ L'URL canonique du site est définie par `SITE_URL` dans ce même fichier.
 - **CSP stricte** : `script-src 'self' 'nonce-…' 'strict-dynamic'` — un nonce unique est généré à chaque requête dans `src/proxy.ts`, ce qui impose le rendu dynamique de la page (lecture de `headers()` dans le layout). Aucun script inline non signé ne peut s'exécuter.
 - HSTS (préchargeable), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP/CORP.
 - `X-Powered-By` désactivé, dépendances auditées (0 vulnérabilité, override `postcss` en place).
+- **Formulaire de contact** : validation serveur stricte, champ honeypot anti-bots (faux succès renvoyé), rate-limit 3 messages / 10 min par IP, e-mail en texte brut (aucune injection d'en-tête ou de HTML possible).
+
+## Formulaire de contact
+
+L'envoi passe par [Resend](https://resend.com). Copier `.env.example` vers `.env.local` et renseigner :
+
+- `RESEND_API_KEY` (obligatoire pour l'envoi ; sans la clé, le formulaire invite à écrire directement par e-mail)
+- `CONTACT_EMAIL` : adresse de réception (défaut : `identity.email` de `src/lib/data.ts`)
+- `CONTACT_FROM` : expéditeur (nécessite un domaine vérifié chez Resend ; défaut : `onboarding@resend.dev`)
+
+Le formulaire fonctionne sans JavaScript (progressive enhancement des Server Actions). Le rate-limit est en mémoire : suffisant sur une instance unique (Vercel/VPS), à remplacer par un store partagé (Upstash, Redis) en cas de déploiement multi-instances.
 
 ## SEO & GEO
 
