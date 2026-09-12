@@ -1127,3 +1127,16 @@
   }
   .rv { opacity: 1 !important; transform: none !important; }
 }
+
+/* ── Responsive : correctifs mobile (ajouté 2026-09-13) ── */
+@media (max-width: 960px) { html, body { overflow-x: hidden; } }
+@media (max-width: 700px) {
+  h1.hero-name { font-size: clamp(1.6rem, 8.5vw, 3.4rem); letter-spacing: -.03em; }
+  .hero-desc { font-size: 1rem; margin-bottom: 40px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-ctas .btn-prime, .hero-ctas .btn-ghost { justify-content: center; }
+}
+@media (max-width: 760px) {
+  /* La révélation latérale de la frise décalait le contenu hors écran → révélation verticale sur mobile */
+  .zz-left, .zz-right { transform: translateY(24px); }
+}
