@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-lang="fr">
 <head>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta charset="UTF-8" />
   <meta name="theme-color" content="#05060A" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,11 +60,9 @@
   </script>
 
   <!-- ═══ Google Fonts ═══ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/syne-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/instrument-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -87,6 +86,7 @@
   </div>
 
   <!-- ═══ NAV ═══ -->
+  <header role="banner">
   <nav id="navbar" role="navigation" aria-label="Navigation principale">
     <div class="wrap">
       <div class="nav-inner">
@@ -111,6 +111,7 @@
       </div>
     </div>
   </nav>
+  </header>
 
   <main id="main">
 
@@ -652,6 +653,11 @@
                 placeholder="Décrivez votre projet..."></textarea>
             </div>
 
+            <div class="hp-field" aria-hidden="true">
+              <label for="f-website">Ne pas remplir ce champ</label>
+              <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div id="fMsg" class="form-msg" role="alert" aria-live="polite"></div>
 
             <button type="submit" class="btn-send" id="fBtn">
@@ -820,6 +826,7 @@
       const email = document.getElementById('f-email').value.trim();
       const subj  = document.getElementById('f-subject').value.trim();
       const body  = document.getElementById('f-msg').value.trim();
+      const hp    = document.getElementById('f-website').value;
 
       if (!name || !email || !body) {
         msg.className = 'form-msg err';
@@ -841,7 +848,8 @@
             name,
             email,
             subject: subj || (lang === 'fr' ? 'Contact depuis erdus.fr' : 'Contact from erdus.fr'),
-            message: body
+            message: body,
+            website: hp
           })
         });
         const data = await res.json();

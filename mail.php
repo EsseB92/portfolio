@@ -35,6 +35,12 @@ $email   = trim(strip_tags($raw['email']   ?? ''));
 $subject = trim(strip_tags($raw['subject'] ?? 'Contact depuis erdus.fr'));
 $message = trim(strip_tags($raw['message'] ?? ''));
 
+// ── Honeypot anti-spam ──────────────────────────────────
+if (trim($raw['website'] ?? '') !== '') {
+    echo json_encode(['ok' => true]); // bot détecté : ignoré silencieusement
+    exit;
+}
+
 if (!$name || !$email || !$message) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Champs requis manquants']);
