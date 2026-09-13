@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /mail.php
 
 Sitemap: https://erdus.fr/sitemap.xml
