@@ -78,7 +78,7 @@
   <div id="prog" aria-hidden="true"></div>
 
   <!-- Mobile Menu -->
-  <div id="mob-menu" role="dialog" aria-modal="true" aria-label="Menu navigation">
+  <div id="mob-menu" role="dialog" aria-modal="true" aria-label="Menu navigation" data-aria-fr="Menu navigation" data-aria-en="Navigation menu">
     <a href="#about"     onclick="closeMob()" data-fr="À propos" data-en="About">À propos</a>
     <a href="#experiences" onclick="closeMob()" data-fr="Expériences" data-en="Experience">Expériences</a>
     <a href="#portfolio" onclick="closeMob()" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
@@ -87,10 +87,10 @@
 
   <!-- ═══ NAV ═══ -->
   <header role="banner">
-  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+  <nav id="navbar" role="navigation" aria-label="Navigation principale" data-aria-fr="Navigation principale" data-aria-en="Main navigation">
     <div class="wrap">
       <div class="nav-inner">
-        <a href="#hero" class="nav-logo" aria-label="Erdus - Accueil">ERDU<em>S</em></a>
+        <a href="#hero" class="nav-logo" aria-label="Erdus - Accueil" data-aria-fr="Erdus - Accueil" data-aria-en="Erdus - Home">ERDU<em>S</em></a>
 
         <ul class="nav-links" role="list">
           <li><a href="#about"     data-fr="À propos"  data-en="About">À propos</a></li>
@@ -100,11 +100,11 @@
         </ul>
 
         <div class="nav-right">
-          <div class="lang-toggle" role="group" aria-label="Choisir la langue">
+          <div class="lang-toggle" role="group" aria-label="Choisir la langue" data-aria-fr="Choisir la langue" data-aria-en="Choose language">
             <button class="lang-btn on" id="btnFR" onclick="setLang('fr')" aria-pressed="true">FR</button>
             <button class="lang-btn"    id="btnEN" onclick="setLang('en')" aria-pressed="false">EN</button>
           </div>
-          <button class="hamburger" id="hbg" aria-label="Ouvrir le menu" aria-expanded="false" onclick="togMob()">
+          <button class="hamburger" id="hbg" aria-label="Ouvrir le menu" data-aria-fr="Ouvrir le menu" data-aria-en="Open menu" aria-expanded="false" onclick="togMob()">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -137,7 +137,7 @@
         </p>
 
         <div class="hero-ctas rv" data-d="3">
-          <a href="https://www.malt.fr/profile/bertrandsudre" target="_blank" rel="noopener noreferrer" class="btn-prime" aria-label="Voir mon profil Malt (nouvelle fenêtre)">
+          <a href="https://www.malt.fr/profile/bertrandsudre" target="_blank" rel="noopener noreferrer" class="btn-prime" aria-label="Voir mon profil Malt (nouvelle fenêtre)" data-aria-fr="Voir mon profil Malt (nouvelle fenêtre)" data-aria-en="View my Malt profile (new window)">
             <span data-fr="Mon profil Malt" data-en="View Malt profile">Mon profil Malt</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </a>
@@ -184,7 +184,7 @@
               Mon objectif est de comprendre vos besoins pour offrir des outils web personnalisés qui renforcent votre présence en ligne et stimulent votre croissance.
             </p>
 
-            <div class="stack-tags" aria-label="Technologies maîtrisées">
+            <div class="stack-tags" aria-label="Technologies maîtrisées" data-aria-fr="Technologies maîtrisées" data-aria-en="Mastered technologies">
               <span class="stag">Next.js</span>
               <span class="stag">React</span>
               <span class="stag">TypeScript</span>
@@ -631,7 +631,7 @@
               Vous avez un projet ou une question ? Contactez-moi pour une réponse rapide et personnalisée. Je suis disponible pour de nouvelles opportunités.
             </p>
 
-            <nav class="socials rv" aria-label="Réseaux professionnels">
+            <nav class="socials rv" aria-label="Réseaux professionnels" data-aria-fr="Réseaux professionnels" data-aria-en="Professional networks">
               <a href="https://www.malt.fr/profile/bertrandsudre/" target="_blank" rel="noopener noreferrer" class="soc-link">
                 <div>
                   <div class="soc-name">Malt</div>
@@ -657,7 +657,7 @@
           </div>
 
           <!-- FORM -->
-          <form class="c-form rv" id="cForm" novalidate aria-label="Formulaire de contact">
+          <form class="c-form rv" id="cForm" novalidate aria-label="Formulaire de contact" data-aria-fr="Formulaire de contact" data-aria-en="Contact form">
             <div class="form-row">
               <div class="fg">
                 <label for="f-name" data-fr="Nom" data-en="Name">Nom</label>
@@ -705,7 +705,7 @@
     <div class="wrap">
       <div class="foot-inner">
         <p class="foot-copy">© <span id="yr">2026</span> - Bertrand Sudre / Erdus</p>
-        <nav aria-label="Liens légaux">
+        <nav aria-label="Liens légaux" data-aria-fr="Liens légaux" data-aria-en="Legal links">
           <ul class="foot-nav">
             <li><a href="/mentions-legales" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</a></li>
             <li><a href="/politique-de-confidentialite" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a></li>
@@ -750,6 +750,10 @@
         } else {
           el.innerHTML = val;
         }
+      });
+
+      document.querySelectorAll('[data-aria-fr]').forEach(el => {
+        el.setAttribute('aria-label', l === 'fr' ? el.dataset.ariaFr : el.dataset.ariaEn);
       });
 
       // Patches for placeholders not covered by data-fr/en on the input itself
