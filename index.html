@@ -328,7 +328,7 @@
             <span class="zz-connector" aria-hidden="true"></span>
             <div class="zz-card">
               <div class="zz-meta">
-                <span class="zz-date" data-fr="Juil. 2025 - Aujourd'hui · 10 mois" data-en="Jul. 2025 - Present · 10 months">Juil. 2025 - Aujourd'hui · 10 mois</span>
+                <span class="zz-date" data-start="2025-07" data-fr="Juil. 2025 - Aujourd'hui" data-en="Jul. 2025 - Present">Juil. 2025 - Aujourd'hui</span>
                 <span class="zz-company">Edreams Factory · Alternance · Maisons-Alfort</span>
               </div>
               <h3 class="zz-role" data-fr="Assistant Responsable de Production" data-en="Assistant Production Manager">Assistant Responsable de Production</h3>
@@ -351,7 +351,7 @@
             <span class="zz-connector" aria-hidden="true"></span>
             <div class="zz-card">
               <div class="zz-meta">
-                <span class="zz-date" data-fr="Oct. 2023 - Aujourd'hui · 2 ans 7 mois" data-en="Oct. 2023 - Present · 2 yrs 7 mo">Oct. 2023 - Aujourd'hui · 2 ans 7 mois</span>
+                <span class="zz-date" data-start="2023-10" data-fr="Oct. 2023 - Aujourd'hui" data-en="Oct. 2023 - Present">Oct. 2023 - Aujourd'hui</span>
                 <span class="zz-company">Erdus · Indépendant · Bois-Colombes</span>
               </div>
               <h3 class="zz-role" data-fr="Développeur Web Freelance" data-en="Freelance Web Developer">Développeur Web Freelance</h3>
@@ -379,7 +379,7 @@
               <h3 class="zz-role" data-fr="Adjoint Responsable Conduite de Projets" data-en="Deputy Project Manager">Adjoint Responsable Conduite de Projets</h3>
               <p class="zz-desc" data-fr="Pilotage de projets digitaux, rédaction de cahiers des charges fonctionnels, analyses comparatives de logiciels CAO et veille technologique. Coordination transversale autour de solutions BIM innovantes."
                  data-en="Digital project management, functional specifications writing, CAO software comparative analysis, and technology watch. Cross-functional coordination around innovative BIM solutions.">
-                Pilotage de projets digitaux, rédaction de cahiers des charges fonctionnels, analyses comparatives de logiciels CAO et veille technologique. Coordination transversale autour de solutions BIM.
+                Pilotage de projets digitaux, rédaction de cahiers des charges fonctionnels, analyses comparatives de logiciels CAO et veille technologique. Coordination transversale autour de solutions BIM innovantes.
               </p>
               <div class="zz-tags">
                 <span class="ptag">BIM</span><span class="ptag" data-fr="Cahier des charges" data-en="Specifications">Cahier des charges</span>
@@ -401,7 +401,7 @@
               <h3 class="zz-role" data-fr="Gestionnaire Administratif et Logistique" data-en="Administrative & Logistics Manager">Gestionnaire Administratif et Logistique</h3>
               <p class="zz-desc" data-fr="Optimisation de l'infrastructure IT, gestion du parc informatique et des incidents techniques. Support utilisateur quotidien développant polyvalence et sens du service en environnements techniques et humains."
                  data-en="IT infrastructure optimization, hardware fleet management, and technical incident handling. Daily user support, developing versatility and service-mindedness in technical environments.">
-                Optimisation de l'infrastructure IT, gestion du parc informatique et des incidents techniques. Support utilisateur quotidien dans un environnement exigeant.
+                Optimisation de l'infrastructure IT, gestion du parc informatique et des incidents techniques. Support utilisateur quotidien développant polyvalence et sens du service en environnements techniques et humains.
               </p>
               <div class="zz-tags">
                 <span class="ptag" data-fr="Support IT" data-en="IT Support">Support IT</span>
@@ -424,7 +424,7 @@
               <h3 class="zz-role" data-fr="Administrateur SharePoint" data-en="SharePoint Administrator">Administrateur SharePoint</h3>
               <p class="zz-desc" data-fr="Mise en place d'une solution collaborative SharePoint, personnalisation du CMS et gestion de contenu. Formation des équipes aux outils collaboratifs et alignement entre besoins métier et contraintes techniques."
                  data-en="Deployment of a SharePoint collaborative solution, CMS customization and content management. Team training on collaborative tools, bridging business needs and technical constraints.">
-                Mise en place d'une solution SharePoint collaborative, personnalisation du CMS et formation des équipes aux outils. Alignement entre besoins métier et contraintes techniques.
+                Mise en place d'une solution collaborative SharePoint, personnalisation du CMS et gestion de contenu. Formation des équipes aux outils collaboratifs et alignement entre besoins métier et contraintes techniques.
               </p>
               <div class="zz-tags">
                 <span class="ptag">SharePoint</span><span class="ptag">CMS</span>
@@ -768,7 +768,33 @@
       document.querySelector('meta[name="description"]').content = l === 'fr'
         ? 'Bertrand Sudre, développeur web freelance spécialisé en création de sites sur mesure, SEO, performance et sécurité.'
         : 'Bertrand Sudre, freelance web developer specialized in custom websites, SEO, performance, and security.';
+
+      applyDurations(l);
     }
+
+    // Durées auto-calculées (postes en cours) — recalculées à chaque affichage
+    function formatDuration(startISO, l) {
+      const [y, m] = startISO.split('-').map(Number);
+      const now = new Date();
+      let months = (now.getFullYear() - y) * 12 + (now.getMonth() - (m - 1));
+      if (months < 0) months = 0;
+      const yrs = Math.floor(months / 12), mos = months % 12, parts = [];
+      if (l === 'fr') {
+        if (yrs) parts.push(yrs + (yrs > 1 ? ' ans' : ' an'));
+        if (mos) parts.push(mos + ' mois');
+        return parts.length ? parts.join(' ') : '0 mois';
+      }
+      if (yrs) parts.push(yrs + (yrs > 1 ? ' yrs' : ' yr'));
+      if (mos) parts.push(mos + ' mo');
+      return parts.length ? parts.join(' ') : '0 mo';
+    }
+    function applyDurations(l) {
+      document.querySelectorAll('.zz-date[data-start]').forEach(el => {
+        const base = l === 'fr' ? el.dataset.fr : el.dataset.en;
+        el.textContent = base + ' · ' + formatDuration(el.dataset.start, l);
+      });
+    }
+    applyDurations(lang);
 
     /* ═══════════════════════════════
        CUSTOM CURSOR
