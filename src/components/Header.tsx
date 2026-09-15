@@ -31,10 +31,10 @@ export default function Header({ locale, ui }: Props) {
   const onServices = pathname.startsWith(services.replace(/\/$/, ""));
 
   const navItems: NavItem[] = [
-    { href: services, label: ui.nav.services, highlight: true },
     { href: `${home}#methode`, label: ui.nav.method, section: "methode" },
     { href: `${home}#competences`, label: ui.nav.skills, section: "competences" },
     { href: `${home}#parcours`, label: ui.nav.experience, section: "parcours" },
+    { href: services, label: ui.nav.services, highlight: true },
     { href: `${home}#projets`, label: ui.nav.projects, section: "projets" },
     { href: `${home}#faq`, label: ui.nav.faq, section: "faq" },
     { href: `${home}#contact`, label: ui.nav.contact, section: "contact" },
