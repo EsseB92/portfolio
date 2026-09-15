@@ -266,7 +266,6 @@ export function serviceGraph(locale: Locale, id: ServiceId) {
         description: service.jsonLd.description,
         serviceType: service.jsonLd.serviceType,
         url: pageUrl,
-        inLanguage: localeTags[locale],
         provider: { "@id": ORG_ID },
         areaServed: areaServed(),
         availableChannel: {
