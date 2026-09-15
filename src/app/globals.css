@@ -1,29 +1,109 @@
 @import "tailwindcss";
 
+/* =============================================================================
+   SOCLE — valeurs par défaut du site (thème sombre uniquement)
+   Header, footer, grille et espacements sont identiques sur toutes les pages.
+   Les deux pistes n'overrident qu'un sous-ensemble de ces variables.
+   ========================================================================== */
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --muted: #52525b;
-  --surface: #ffffff;
-  --border: #e4e4e7;
-  --accent: #4338ca;
-  --accent-soft: #eef2ff;
-  --accent-contrast: #ffffff;
+  color-scheme: dark;
+
+  /* Couleurs */
+  --background: #0a0a0f;
+  --surface: #14141c;
+  --border: #27272f;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #a5b4fc;
+  --accent-2: #a5b4fc; /* second accent : identique au premier hors piste gaming */
+  --accent-soft: #1e1b4b;
+  --accent-contrast: #0a0a0f;
+  --accent-glow: transparent;
+  --gradient-key: linear-gradient(100deg, #a5b4fc, #818cf8);
+
+  /* Forme */
+  --radius-card: 4px;
+  --radius-control: 4px;
+  --radius-pill: 999px;
+  --border-width: 1px;
+
+  /* Relief au survol */
+  --card-lift: -2px;
+  --card-shadow-hover: 0 10px 28px -16px color-mix(in srgb, var(--accent) 45%, transparent);
+
+  /* Texture (0 = aucune) */
+  --scanline-opacity: 0;
+
+  /* Mouvement */
+  --motion-reveal: 500ms;
+  --motion-stagger: 60ms;
+  --motion-hover: 180ms;
+  --hero-gradient: linear-gradient(
+    115deg,
+    var(--background) 0%,
+    var(--accent-soft) 45%,
+    var(--background) 100%
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0f;
-    --foreground: #f4f4f5;
-    --muted: #a1a1aa;
-    --surface: #14141c;
-    --border: #27272f;
-    --accent: #a5b4fc;
-    --accent-soft: #1e1b4b;
-    --accent-contrast: #0a0a0f;
-  }
+/* =============================================================================
+   PISTE PRO — projets digitaux
+   Socle actuel, dynamisé avec retenue : mêmes tokens, déclarés ici pour
+   pouvoir les ajuster indépendamment du socle si besoin.
+   Interdits : glow coloré, néon, parallaxe, emoji, > 1 animation en boucle.
+   ========================================================================== */
+[data-track="pro"] {
+  --accent: #a5b4fc;
+  --accent-2: #a5b4fc;
+  --accent-soft: #1e1b4b;
+  --accent-contrast: #0a0a0f;
+  --accent-glow: transparent;
+  --gradient-key: linear-gradient(100deg, #a5b4fc, #818cf8);
+  --radius-card: 4px;
+  --radius-control: 4px;
+  --card-lift: -2px;
+  --card-shadow-hover: 0 10px 28px -16px color-mix(in srgb, var(--accent) 45%, transparent);
+  --scanline-opacity: 0;
+  --motion-reveal: 500ms;
+  --motion-stagger: 60ms;
+  --motion-hover: 180ms;
 }
 
+/* =============================================================================
+   PISTE GAMING — streaming & hardware (identité Erdus / erdus.fr)
+   Dense, contrastée, énergique. Toujours sombre.
+   Contrastes sur --surface : lime 14:1, magenta 5.6:1 → accents uniquement,
+   jamais en corps de texte ; jamais de texte blanc sur magenta (3.2:1).
+   ========================================================================== */
+[data-track="gaming"] {
+  --background: #0b0f17;
+  --surface: #101520;
+  --border: #1f2a3a;
+  --accent: #c8f135;
+  --accent-2: #ff3da5;
+  --accent-soft: #1a2000;
+  --accent-contrast: #0a0a0f;
+  --accent-glow: rgba(200, 241, 53, 0.28);
+  --gradient-key: linear-gradient(100deg, #c8f135, #ff3da5);
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --card-lift: -6px;
+  --card-shadow-hover: 0 0 0 1px var(--accent), 0 16px 40px -12px var(--accent-glow);
+  --scanline-opacity: 0.045;
+  --motion-reveal: 400ms;
+  --motion-stagger: 50ms;
+  --motion-hover: 220ms;
+  --hero-gradient: radial-gradient(
+    60% 80% at 20% 20%,
+    color-mix(in srgb, var(--accent) 14%, transparent) 0%,
+    transparent 70%
+  );
+
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Tailwind : expose les tokens comme couleurs utilitaires (bg-accent, text-muted…) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -31,6 +111,7 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
   --color-accent-soft: var(--accent-soft);
   --color-accent-contrast: var(--accent-contrast);
   --font-sans: var(--font-geist-sans);
@@ -39,7 +120,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -55,11 +136,15 @@ body {
   color: var(--accent-contrast);
 }
 
-/* Focus visible net et contrasté pour la navigation clavier */
+/* Focus visible net et contrasté : la couleur suit la piste (indigo / lime) */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+[data-track="gaming"] :focus-visible {
+  box-shadow: 0 0 0 6px var(--accent-glow);
 }
 
 /* Lien d'évitement : caché hors focus, visible au clavier */
@@ -72,12 +157,177 @@ body {
   background: var(--accent);
   color: var(--accent-contrast);
   font-weight: 600;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 var(--radius-control) var(--radius-control);
   transition: top 0.15s ease;
 }
 
 .skip-link:focus-visible {
   top: 0;
+}
+
+/* =============================================================================
+   Composants partagés : la forme vient des tokens, la mise en page de Tailwind
+   ========================================================================== */
+@layer components {
+  .card {
+    background: var(--surface);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .figure {
+    font-family: var(--font-mono), monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius-pill);
+    color: var(--foreground);
+    transition:
+      border-color var(--motion-hover) ease-out,
+      color var(--motion-hover) ease-out;
+  }
+
+  .badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .badge-accent {
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    color: var(--accent);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: var(--radius-control);
+    transition:
+      opacity var(--motion-hover) ease-out,
+      transform var(--motion-hover) ease-out,
+      border-color var(--motion-hover) ease-out,
+      box-shadow var(--motion-hover) ease-out;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    background: var(--surface);
+    border: var(--border-width) solid var(--border);
+    color: var(--foreground);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+  }
+
+  /* Texte en dégradé accent → accent-2 (plat sur les pistes sans second accent) */
+  .text-key {
+    background: var(--gradient-key);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Bordure en dégradé : un pseudo-élément masqué, aucune image */
+  .border-key {
+    position: relative;
+  }
+
+  .border-key::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--border-width);
+    background: var(--gradient-key);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Hero : dégradé de fond (animé si mouvement autorisé) + texture optionnelle */
+  .hero-bg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  /* Le pseudo-élément fait deux fois la largeur : l'animation ne déplace
+     que transform (composée par le GPU, aucun repaint) */
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    z-index: -1;
+    background: var(--hero-gradient);
+    will-change: transform;
+  }
+
+  /* Lignes de scan : pur CSS, opacité pilotée par la piste (0 sur le socle) */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--scanline-opacity);
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 3px,
+      var(--foreground) 3px,
+      var(--foreground) 4px
+    );
+  }
+
+  /* Barre de progression de scroll : affichée seulement si le navigateur
+     supporte les animations pilotées par le défilement (zéro JavaScript) */
+  .scroll-progress {
+    display: none;
+  }
 }
 
 /* Lien de navigation : soulignement animé + état actif (scroll-spy) */
@@ -99,11 +349,11 @@ body {
 }
 
 .nav-link:hover::after,
-.nav-link[aria-current="true"]::after {
+.nav-link[aria-current]::after {
   transform: scaleX(1);
 }
 
-.nav-link[aria-current="true"] {
+.nav-link[aria-current] {
   color: var(--foreground);
 }
 
@@ -114,20 +364,26 @@ body {
   }
 }
 
+/* =============================================================================
+   Mouvement — uniquement si l'utilisateur ne demande pas de réduction
+   ========================================================================== */
 @media (prefers-reduced-motion: no-preference) {
-  /* Animation d'apparition au scroll : ne s'applique que si JS est actif
-     ([data-js]) — sans JavaScript, le contenu reste entièrement visible.
-     --stagger décale chaque élément d'une grille pour un effet en cascade.
-     border-color/box-shadow restent à délai nul pour ne pas retarder le survol. */
+  /* 1. Révélation au scroll (IntersectionObserver dans ScrollReveal.tsx).
+     Ne s'applique que si JS est actif ([data-js]) : sans JavaScript, tout
+     reste visible. --stagger décale chaque élément d'une même grille. */
   [data-js] .reveal {
     opacity: 0;
-    transform: translateY(1.5rem);
+    transform: translateY(12px);
     transition:
-      opacity 0.6s ease,
-      transform 0.6s ease,
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
-    transition-delay: calc(var(--stagger, 0) * 90ms), calc(var(--stagger, 0) * 90ms), 0s, 0s;
+      opacity var(--motion-reveal) ease,
+      transform var(--motion-reveal) ease,
+      border-color var(--motion-hover) ease-out,
+      box-shadow var(--motion-hover) ease-out;
+    transition-delay:
+      calc(var(--stagger, 0) * var(--motion-stagger)),
+      calc(var(--stagger, 0) * var(--motion-stagger)),
+      0s,
+      0s;
   }
 
   .reveal.is-visible {
@@ -135,11 +391,11 @@ body {
     transform: none;
   }
 
-  /* Entrée du héros au chargement, en cascade (CSS pur, sans JS) */
+  /* Entrée du héros au chargement, en cascade (CSS pur) */
   @keyframes fade-up {
     from {
       opacity: 0;
-      transform: translateY(1rem);
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
@@ -148,28 +404,37 @@ body {
   }
 
   .hero-enter {
-    animation: fade-up 0.7s ease both;
-    animation-delay: calc(var(--stagger, 0) * 130ms);
+    animation: fade-up 0.6s ease both;
+    animation-delay: calc(var(--stagger, 0) * 110ms);
   }
 
-  /* Halos dérivant lentement derrière le héros */
-  @keyframes blob-drift {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
+  /* 2. Dégradé de fond qui se déplace lentement derrière le héros.
+     C'est la seule animation en boucle de la page. */
+  @keyframes hero-drift {
+    from {
+      transform: translateX(0);
     }
-    50% {
-      transform: translate(3rem, -2rem) scale(1.15);
+    to {
+      transform: translateX(-50%);
     }
   }
 
-  .blob {
-    animation: blob-drift 18s ease-in-out infinite;
+  .hero-bg::before {
+    animation: hero-drift 24s ease-in-out infinite alternate;
   }
 
-  .blob-alt {
-    animation-duration: 26s;
-    animation-direction: reverse;
+  /* 3. Cartes : élévation légère, bordure vers l'accent, glow sur gaming */
+  .card-lift {
+    transition:
+      transform var(--motion-hover) ease-out,
+      box-shadow var(--motion-hover) ease-out,
+      border-color var(--motion-hover) ease-out;
+  }
+
+  .card-lift:hover {
+    transform: translateY(var(--card-lift));
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-hover);
   }
 
   /* Ouverture animée des questions de la FAQ */
@@ -185,20 +450,35 @@ body {
     block-size: auto;
   }
 
-  /* Carte qui se soulève au survol */
-  .card-lift {
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      border-color 0.25s ease;
-  }
+  /* 5. Barre de progression de scroll (piste pro), pilotée par le défilement */
+  @supports (animation-timeline: scroll()) {
+    @keyframes scroll-grow {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
 
-  .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--accent) 35%, transparent);
+    .scroll-progress {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 60;
+      height: 2px;
+      width: 100%;
+      background: var(--accent);
+      transform-origin: 0 50%;
+      animation: scroll-grow linear both;
+      animation-timeline: scroll(root);
+    }
   }
 }
 
+/* Sans mouvement : tout reste lisible, rien ne bouge (les cartes gardent
+   uniquement leur changement de bordure au survol) */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -210,5 +490,9 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .card-lift:hover {
+    border-color: var(--accent);
   }
 }

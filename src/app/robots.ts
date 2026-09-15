@@ -1,5 +1,8 @@
+export const dynamic = "force-static";
+
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/data";
+import { routes } from "@/lib/i18n";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,8 +10,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: [routes.thanks.fr, routes.thanks.en],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

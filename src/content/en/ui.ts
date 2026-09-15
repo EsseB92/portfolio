@@ -1,0 +1,87 @@
+import type { UiStrings } from "@/content/fr/ui";
+
+/** UI strings, English. Same shape as the French file. */
+export const ui: UiStrings = {
+  skipLink: "Skip to main content",
+  brandHome: "Erdus — back to home",
+  nav: {
+    label: "Main navigation",
+    method: "Method",
+    skills: "Skills",
+    experience: "Experience",
+    services: "Services",
+    projects: "Projects",
+    faq: "FAQ",
+    contact: "Contact",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
+  siteLinks: {
+    label: "Erdus websites",
+    portfolio: "Portfolio",
+    games: "Games",
+    booking: "Book a call",
+  },
+  lang: {
+    switchLabel: "Lire cette page en français",
+    switchShort: "FR",
+  },
+  breadcrumb: { label: "Breadcrumb", home: "Home", services: "Services" },
+  newTab: " (opens in a new tab)",
+  booking: {
+    label: "Book a free 30-min scoping call",
+    hint: "A 30-minute video call, no commitment, to frame your needs.",
+  },
+  figures: {
+    title: "Key figures",
+    years: "years of experience",
+    response: "response time",
+    offers: "services, two worlds",
+  },
+  service: {
+    eyebrowPro: "Digital projects",
+    eyebrowGaming: "Streaming & hardware",
+    relatedTitle: "Going further",
+    relatedHub: "See all four services",
+    relatedPrefix: "Related service:",
+    casesNote: "Typical case",
+    stepLabel: "Step",
+    seeDeliverables: "See what is delivered",
+  },
+  hub: {
+    seeOffer: "See the service",
+  },
+  form: {
+    name: "Name",
+    namePlaceholder: "Your name",
+    email: "Email",
+    emailPlaceholder: "you@example.com",
+    message: "Message",
+    messagePlaceholder: "Describe your project: goal, timeline, rough budget…",
+    submit: "Send message",
+    sending: "Sending…",
+    success: "Message sent! I will reply within 48 hours.",
+    errorName: "Please enter your name (2 to 100 characters).",
+    errorEmail: "Please enter a valid email address.",
+    errorMessage: "Your message must be between 10 and 5,000 characters.",
+    errorFix: "Please fix the highlighted fields.",
+    errorGeneric: "Sending failed. Try again later or email me at",
+    unavailable: "The form is temporarily unavailable. Email me directly at",
+    honeypot: "Do not check this box",
+    subject: "[Portfolio] New message",
+  },
+  thanks: {
+    title: "Message sent",
+    text: "Thank you, your message has arrived. I will reply within 48 hours.",
+    back: "Back to home",
+  },
+  footer: {
+    tagline: "Freelance web developer",
+    servicesTitle: "Services",
+  },
+  notFound: {
+    title: "Page not found",
+    text: "This page does not exist or has been moved.",
+    back: "Back to home",
+  },
+};

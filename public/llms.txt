@@ -1,21 +1,31 @@
 # Erdus — Bertrand Sudre
 
-> Bertrand Sudre est développeur web freelance basé à Bois-Colombes (Île-de-France, France). Il conçoit des sites et applications web sur mesure : rapides, sécurisés, accessibles et optimisés pour le référencement (SEO). Il travaille à distance avec des clients partout en France.
+> Bertrand Sudre est développeur web freelance basé à Bois-Colombes (Hauts-de-Seine, Île-de-France, France). Il propose quatre offres réparties en deux univers : des projets digitaux pour les entreprises (création de site web, gestion de projet digital) et du développement streaming et du montage PC pour les streamers et les joueurs. Il travaille à distance avec des clients partout en France. Site en français (défaut) et en anglais (/en/).
 
-## Services
+## Offres
 
-- Développement web sur mesure : sites vitrines, e-commerce, blogs et applications web, du cahier des charges au déploiement
-- SEO et visibilité : optimisation on-page, contenu structuré, données enrichies (schema.org), amélioration technique
-- Performance web : Core Web Vitals, scores PageSpeed Insights optimisés
-- Sécurité : HTTPS, en-têtes de sécurité (CSP, HSTS), pare-feu applicatifs, durcissement WordPress
+- Création de site web (https://erdus.fr/services/creation-site-web/) : sites vitrines, boutiques et applications sur mesure avec Next.js ou WordPress, SEO technique, performance, sécurité et accessibilité inclus. Anglais : https://erdus.fr/en/services/web-development/
+- Gestion de projet digital (https://erdus.fr/services/gestion-projet-digital/) : chef de projet digital freelance en temps partagé, cadrage, cahier des charges, consultation de prestataires, pilotage et recette. Anglais : https://erdus.fr/en/services/digital-project-management/
+- Développement streaming (https://erdus.fr/services/dev-streaming/) : bots Discord et Twitch personnalisés, bots YouTube Live, overlays de stream interactifs, automatisations du chat reliées à la domotique (Home Assistant, Philips Hue, OBS), mini-jeux de chat, hébergement et maintenance. Anglais : https://erdus.fr/en/services/streaming-development/
+- Conseil et montage PC (https://erdus.fr/services/conseil-montage-pc/) : conseil de configuration, choix des composants, assemblage, installation, tests et mise à niveau de PC gaming, streaming et création, dans les Hauts-de-Seine et en région parisienne. Anglais : https://erdus.fr/en/services/custom-pc-building/
+
+Toutes les offres commencent par un cadrage gratuit de 30 minutes : https://rdv.erdus.fr/cadrage
+
+## Méthode (commune à toutes les offres)
+
+- Développement sur mesure, du cahier des charges au déploiement
+- SEO et visibilité : données structurées schema.org, sitemap, hreflang, maillage interne
+- Performance web : Core Web Vitals au vert
+- Sécurité : HTTPS, en-têtes de sécurité, durcissement WordPress
 - Responsive design et accessibilité (RGAA / WCAG)
-- Automatisation et IA : workflows n8n et Make, intégration d'API IA
+- Automatisation et IA : n8n, Make, intégration d'API IA
 
 ## Compétences techniques
 
 - Frontend : Next.js, React, TypeScript, Tailwind CSS, Three.js
 - Backend et CMS : PHP, Symfony, Twig, WordPress, Elementor
 - Outils : Docker, GitHub, Figma, Notion
+- Automatisation et streaming : n8n, Make, Discord.js, Twitch API, OBS WebSocket
 
 ## Expérience
 
@@ -32,9 +42,15 @@
 - Manufacturist : e-commerce WordPress optimisé performance
 - Observatoire du Paysage UTLB : blog WordPress sécurisé avec newsletter
 
+## Sites Erdus
+
+- Portfolio et services : https://erdus.fr
+- Jeux : https://game.erdus.fr
+- Réservation d'un cadrage : https://rdv.erdus.fr
+
 ## Contact
 
-- Site : https://erdus.fr
+- Site : https://erdus.fr/#contact
 - GitHub : https://github.com/EsseB92
 - LinkedIn : https://www.linkedin.com/in/bertrand-sudre/
 - Malt : https://www.malt.fr/profile/bertrandsudre

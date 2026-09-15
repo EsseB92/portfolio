@@ -1,15 +1,19 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * Active les animations d'apparition au scroll.
+ * Active les animations d'apparition au scroll (IntersectionObserver natif).
  * Le marqueur data-js garantit que sans JavaScript, le contenu reste visible
  * (les styles .reveal ne s'appliquent que sous [data-js]).
  * Les classes sont retirées une fois l'entrée jouée pour rendre la main aux
  * transitions de survol (.card-lift) sans hériter du délai en cascade.
+ * Relancé à chaque changement de page (navigation client).
  */
 export default function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduced.matches) return;
@@ -28,7 +32,7 @@ export default function ScrollReveal() {
           const el = entry.target;
           observer.unobserve(el);
           el.classList.add("is-visible");
-          const timer = setTimeout(() => cleanup(el), 2000);
+          const timer = setTimeout(() => cleanup(el), 1500);
           const onEnd = (e: Event) => {
             if ((e as TransitionEvent).propertyName !== "transform") return;
             clearTimeout(timer);
@@ -44,7 +48,7 @@ export default function ScrollReveal() {
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
