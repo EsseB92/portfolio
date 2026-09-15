@@ -38,6 +38,8 @@ export const routes = {
     fr: "/services/conseil-montage-pc/",
     en: "/en/services/custom-pc-building/",
   },
+  legal: { fr: "/mentions-legales/", en: "/en/legal-notice/" },
+  privacy: { fr: "/politique-de-confidentialite/", en: "/en/privacy-policy/" },
   thanks: { fr: "/merci/", en: "/en/thank-you/" },
 } as const satisfies Record<string, Record<Locale, string>>;
 

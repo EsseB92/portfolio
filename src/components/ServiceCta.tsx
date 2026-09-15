@@ -5,12 +5,14 @@ type Props = {
   title: string;
   text: string;
   label: string;
+  /** Libellé court affiché sous 640px */
+  labelShort: string;
   hint: string;
   service?: ServiceId;
 };
 
 /** CTA de fin de page : réservation d'un cadrage gratuit sur rdv.erdus.fr (dofollow). */
-export default function ServiceCta({ title, text, label, hint, service }: Props) {
+export default function ServiceCta({ title, text, label, labelShort, hint, service }: Props) {
   return (
     <section aria-labelledby="titre-cta" className="border-t border-border">
       <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
@@ -23,7 +25,8 @@ export default function ServiceCta({ title, text, label, hint, service }: Props)
           </div>
           <div className="shrink-0">
             <a href={bookingUrl(service)} className="btn btn-primary">
-              {label}
+              <span className="sm:hidden">{labelShort}</span>
+              <span className="hidden sm:inline">{label}</span>
               <Icon name="arrow" size={16} />
             </a>
             <p className="mt-2 text-xs text-muted">{hint}</p>

@@ -1,4 +1,4 @@
-import { skillItems } from "@/lib/data";
+import { links, skillItems } from "@/lib/data";
 import type { HomeContent, HubContent } from "@/types/content";
 
 export const home: HomeContent = {
@@ -142,11 +142,19 @@ export const home: HomeContent = {
     serviceLinkPrefix: "Offre associée :",
     items: [
       {
+        title: "Erdus Games",
+        description:
+          "Jeu web en deux modes : Depixelize (l'image se dépixélise, à deviner avant qu'elle ne soit nette) et Guess (un indice de plus à chaque erreur). Cinq univers, quatre niveaux, JavaScript vanilla et Canvas, données via les API RAWG, TMDB, AniList et flagcdn.",
+        tags: ["JavaScript", "Canvas", "API REST"],
+        url: links.games,
+        service: "dev-streaming",
+      },
+      {
         title: "Erdus",
         description:
           "Portfolio personnel développé avec Next.js et TypeScript : SEO multilingue, performance optimisée et design sur mesure.",
         tags: ["Next.js", "TypeScript", "SEO"],
-        url: "https://erdus.fr",
+        url: links.portfolio,
         service: "creation-site-web",
       },
       {
@@ -154,7 +162,7 @@ export const home: HomeContent = {
         description:
           "Expérience immersive en 3D dans le navigateur avec Three.js : animations et effets visuels spectaculaires.",
         tags: ["Three.js", "React", "WebGL"],
-        url: null,
+        url: links.portfolio3d,
         service: "creation-site-web",
       },
       {
@@ -162,7 +170,7 @@ export const home: HomeContent = {
         description:
           "Site e-commerce WordPress optimisé pour la performance : temps de chargement réduits et parcours d'achat fluide.",
         tags: ["WordPress", "E-commerce", "Performance"],
-        url: null,
+        url: links.manufacturist,
         service: "creation-site-web",
       },
       {
@@ -170,7 +178,7 @@ export const home: HomeContent = {
         description:
           "Blog WordPress avec sécurisation renforcée sur mesure et intégration d'une newsletter Noptin.",
         tags: ["WordPress", "Sécurité", "Newsletter"],
-        url: null,
+        url: links.utlb,
         service: "creation-site-web",
       },
     ],

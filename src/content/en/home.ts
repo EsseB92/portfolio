@@ -1,4 +1,4 @@
-import { skillItems } from "@/lib/data";
+import { links, skillItems } from "@/lib/data";
 import type { HomeContent, HubContent } from "@/types/content";
 
 export const home: HomeContent = {
@@ -141,11 +141,19 @@ export const home: HomeContent = {
     serviceLinkPrefix: "Related service:",
     items: [
       {
+        title: "Erdus Games",
+        description:
+          "Web game with two modes: Depixelize (the image sharpens progressively, guess it before it is clear) and Guess (one more clue after each mistake). Five universes, four levels, vanilla JavaScript and Canvas, data from the RAWG, TMDB, AniList and flagcdn APIs.",
+        tags: ["JavaScript", "Canvas", "REST API"],
+        url: links.games,
+        service: "dev-streaming",
+      },
+      {
         title: "Erdus",
         description:
           "Personal portfolio built with Next.js and TypeScript: multilingual SEO, optimized performance and custom design.",
         tags: ["Next.js", "TypeScript", "SEO"],
-        url: "https://erdus.fr",
+        url: links.portfolio,
         service: "creation-site-web",
       },
       {
@@ -153,7 +161,7 @@ export const home: HomeContent = {
         description:
           "Immersive 3D experience in the browser with Three.js: animations and striking visual effects.",
         tags: ["Three.js", "React", "WebGL"],
-        url: null,
+        url: links.portfolio3d,
         service: "creation-site-web",
       },
       {
@@ -161,7 +169,7 @@ export const home: HomeContent = {
         description:
           "WordPress e-commerce site tuned for performance: shorter loading times and a smoother checkout.",
         tags: ["WordPress", "E-commerce", "Performance"],
-        url: null,
+        url: links.manufacturist,
         service: "creation-site-web",
       },
       {
@@ -169,7 +177,7 @@ export const home: HomeContent = {
         description:
           "WordPress blog with custom hardening and a Noptin newsletter integration.",
         tags: ["WordPress", "Security", "Newsletter"],
-        url: null,
+        url: links.utlb,
         service: "creation-site-web",
       },
     ],

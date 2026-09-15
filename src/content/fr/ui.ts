@@ -28,6 +28,7 @@ export const ui = {
   newTab: " (nouvel onglet)",
   booking: {
     label: "Réserver un cadrage gratuit — 30 min",
+    labelShort: "Cadrage gratuit — 30 min",
     hint: "Visio de 30 minutes, sans engagement, pour cadrer votre besoin.",
   },
   figures: {
@@ -78,6 +79,9 @@ export const ui = {
   footer: {
     tagline: "Développeur web freelance",
     servicesTitle: "Offres",
+    legalTitle: "Légal",
+    legal: "Mentions légales",
+    privacy: "Politique de confidentialité",
   },
   notFound: {
     title: "Page introuvable",

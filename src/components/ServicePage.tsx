@@ -59,7 +59,8 @@ export default function ServicePage({ locale, id }: Props) {
           </p>
           <div style={stagger(3)} className="hero-enter mt-8 flex flex-wrap items-center gap-4">
             <a href={bookingUrl(id)} className="btn btn-primary">
-              {ui.booking.label}
+              <span className="sm:hidden">{ui.booking.labelShort}</span>
+              <span className="hidden sm:inline">{ui.booking.label}</span>
               <Icon name="arrow" size={16} />
             </a>
             <a href="#livrables" className="btn btn-secondary">
@@ -245,6 +246,7 @@ export default function ServicePage({ locale, id }: Props) {
         title={service.cta.title}
         text={service.cta.text}
         label={ui.booking.label}
+        labelShort={ui.booking.labelShort}
         hint={ui.booking.hint}
         service={id}
       />

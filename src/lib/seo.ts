@@ -8,8 +8,10 @@ import {
   otherLocale,
   url,
   type Locale,
+  type RouteId,
 } from "@/lib/i18n";
 import { serviceIds, serviceMeta, type ServiceId, type Track } from "@/lib/services";
+import type { LegalPageContent } from "@/types/legal";
 
 /* ---------------------------------------------------------------------------
    Identifiants stables du @graph (identiques sur toutes les pages)
@@ -148,6 +150,26 @@ export function serviceMetadata(locale: Locale, id: ServiceId): Metadata {
       description: service.seo.description,
       url: url(id, locale),
       image: OG_IMAGE[track],
+    }),
+  };
+}
+
+export function legalMetadata(
+  locale: Locale,
+  id: Extract<RouteId, "legal" | "privacy">,
+  content: LegalPageContent,
+): Metadata {
+  const title = `${content.seo.title} | ${identity.brand}`;
+  return {
+    title: content.seo.title,
+    description: content.seo.description,
+    alternates: alternatesFor(id, locale),
+    ...social({
+      locale,
+      title,
+      description: content.seo.description,
+      url: url(id, locale),
+      image: OG_IMAGE.home,
     }),
   };
 }

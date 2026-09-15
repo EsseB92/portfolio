@@ -15,6 +15,9 @@ function sourcesFor(id: IndexableRoute): readonly string[] {
         "src/content/en/home.ts",
         "src/components/HomePage.tsx",
       ];
+    case "legal":
+    case "privacy":
+      return ["src/content/fr/legal.ts", "src/content/en/legal.ts"];
     case "services":
       return [
         "src/content/fr/home.ts",
@@ -41,7 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return indexable.flatMap((id) => {
     const lastMod = lastModified(sourcesFor(id));
     const languages = Object.fromEntries(locales.map((l) => [l, url(id, l)]));
-    const priority = id === "home" ? 1 : id === "services" ? 0.9 : 0.8;
+    const priority =
+      id === "home" ? 1 : id === "services" ? 0.9 : id === "legal" || id === "privacy" ? 0.3 : 0.8;
     return locales.map((locale) => ({
       url: url(id, locale),
       lastModified: lastMod,

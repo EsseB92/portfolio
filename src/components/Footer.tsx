@@ -17,6 +17,18 @@ export default function Footer({ locale }: Props) {
             © {new Date().getFullYear()} {identity.name} — {identity.brand}.{" "}
             {ui.footer.tagline}, {identity.locality}.
           </p>
+          <ul className="mt-3 flex flex-wrap items-center gap-5">
+            <li>
+              <Link href={path("legal", locale)} className="transition-colors hover:text-foreground">
+                {ui.footer.legal}
+              </Link>
+            </li>
+            <li>
+              <Link href={path("privacy", locale)} className="transition-colors hover:text-foreground">
+                {ui.footer.privacy}
+              </Link>
+            </li>
+          </ul>
           <ul className="mt-4 flex flex-wrap items-center gap-5">
             <li>
               <a href={links.github} rel="noopener" target="_blank" className="transition-colors hover:text-foreground">

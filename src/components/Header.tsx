@@ -18,6 +18,7 @@ type Props = {
   ui: UiStrings;
 };
 
+/** highlight : lien de page (actif selon le pathname) et non ancre (scroll-spy) */
 type NavItem = { href: string; label: string; section?: string; highlight?: boolean };
 
 export default function Header({ locale, ui }: Props) {
@@ -30,10 +31,10 @@ export default function Header({ locale, ui }: Props) {
   const onServices = pathname.startsWith(services.replace(/\/$/, ""));
 
   const navItems: NavItem[] = [
+    { href: services, label: ui.nav.services, highlight: true },
     { href: `${home}#methode`, label: ui.nav.method, section: "methode" },
     { href: `${home}#competences`, label: ui.nav.skills, section: "competences" },
     { href: `${home}#parcours`, label: ui.nav.experience, section: "parcours" },
-    { href: services, label: ui.nav.services, highlight: true },
     { href: `${home}#projets`, label: ui.nav.projects, section: "projets" },
     { href: `${home}#faq`, label: ui.nav.faq, section: "faq" },
     { href: `${home}#contact`, label: ui.nav.contact, section: "contact" },
@@ -135,11 +136,7 @@ export default function Header({ locale, ui }: Props) {
               <Link
                 href={item.href}
                 aria-current={isCurrent(item) ? "true" : undefined}
-                className={
-                  item.highlight
-                    ? "nav-link font-mono text-xs font-semibold tracking-[0.16em] text-accent uppercase transition-colors hover:text-foreground"
-                    : "nav-link text-sm font-medium text-muted transition-colors hover:text-foreground"
-                }
+                className="nav-link text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -180,11 +177,7 @@ export default function Header({ locale, ui }: Props) {
             <Link
               href={item.href}
               aria-current={isCurrent(item) ? "true" : undefined}
-              className={
-                item.highlight
-                  ? "block py-3 font-mono text-xs font-semibold tracking-[0.16em] text-accent uppercase"
-                  : "block py-3 text-sm font-medium text-muted hover:text-foreground"
-              }
+              className="block py-3 text-sm font-medium text-muted hover:text-foreground"
               onClick={() => setOpen(false)}
             >
               {item.label}

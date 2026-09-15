@@ -109,6 +109,7 @@ export default function HubPage({ locale }: Props) {
         title={hub.cta.title}
         text={hub.cta.text}
         label={ui.booking.label}
+        labelShort={ui.booking.labelShort}
         hint={ui.booking.hint}
       />
 

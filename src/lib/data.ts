@@ -11,7 +11,9 @@ export const identity = {
   locality: "Bois-Colombes",
   region: "Île-de-France",
   country: "FR",
-  email: "sudrebertrand@gmail.com",
+  email: "contact@erdus.fr",
+  /** Micro-entreprise (mentions légales) */
+  siret: "824 177 414 00029",
   /** Première expérience listée dans le parcours : base des années d'expérience */
   careerStartYear: 2015,
   /** Délai de réponse annoncé, en heures */
@@ -25,6 +27,9 @@ export const links = {
   portfolio: "https://erdus.fr",
   games: "https://game.erdus.fr",
   booking: "https://rdv.erdus.fr",
+  portfolio3d: "https://3-d-portfolio-one-drab.vercel.app/",
+  manufacturist: "https://manufacturist.com/",
+  utlb: "https://op-utlb.fr/",
 } as const;
 
 /** Technologies par groupe : les intitulés de groupe sont traduits dans le contenu. */

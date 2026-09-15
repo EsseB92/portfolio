@@ -51,13 +51,12 @@ export default function TrackCard({ locale, track, cta, stagger }: Props) {
             </li>
           ))}
         </ul>
-        <Link
-          href={path("services", locale)}
-          className="btn btn-primary mt-8 self-start"
-        >
-          {cta}
-          <Icon name="arrow" size={16} />
-        </Link>
+        <div className="mt-auto pt-8">
+          <Link href={path("services", locale)} className="btn btn-primary">
+            {cta}
+            <Icon name="arrow" size={16} />
+          </Link>
+        </div>
       </div>
     </article>
   );

@@ -30,6 +30,7 @@ export const ui: UiStrings = {
   newTab: " (opens in a new tab)",
   booking: {
     label: "Book a free 30-min scoping call",
+    labelShort: "Free 30-min call",
     hint: "A 30-minute video call, no commitment, to frame your needs.",
   },
   figures: {
@@ -78,6 +79,9 @@ export const ui: UiStrings = {
   footer: {
     tagline: "Freelance web developer",
     servicesTitle: "Services",
+    legalTitle: "Legal",
+    legal: "Legal notice",
+    privacy: "Privacy policy",
   },
   notFound: {
     title: "Page not found",
