@@ -24,8 +24,14 @@ Le site est un export statique Next.js (`out/`), déployé en FTPS par GitHub Ac
    déploiement. Notez l'hôte (`ftp.erdus.fr` ou l'IP), l'identifiant et le mot de
    passe. Compte principal : hôte `45.13.252.81`, utilisateur `u997960870`, racine =
    dossier personnel (`/home/u997960870`).
-6. **Cache** : si le cache LiteSpeed de hPanel est activé, purgez-le après un
-   déploiement si une page ne se met pas à jour.
+6. **Cache CDN** : le CDN Hostinger (`Server: hcdn`) garde les pages HTML en
+   cache selon leur en-tête `Cache-Control`. Le nouveau `.htaccess` sert le HTML
+   en `max-age=0, must-revalidate`, donc les déploiements suivants sont visibles
+   immédiatement. Si une page reste figée : *Performances → CDN → Vider le
+   cache* (erdus.fr).
+7. **game.erdus.fr** est un domaine parqué servi depuis `domains/erdus.fr/public_html/game`.
+   Ne jamais activer `dangerous-clean-slate` dans le workflow : cela effacerait
+   le jeu en même temps que les anciens fichiers.
 
 ## 2. Côté GitHub (Settings → Secrets and variables → Actions)
 
