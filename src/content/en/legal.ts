@@ -18,6 +18,7 @@ export const legal: LegalPageContent = {
         { type: "p", text: `Publication director: ${identity.name}` },
         { type: "p", text: "Sole trader under the French micro-entreprise scheme" },
         { type: "p", text: `SIREN: ${identity.siren}` },
+        { type: "p", text: "VAT not applicable, Article 293 B of the French General Tax Code (CGI)" },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
         { type: "p", text: `Email: ${identity.email}` },
         { type: "p", text: `Website: ${links.portfolio}` },

@@ -18,6 +18,7 @@ export const legal: LegalPageContent = {
         { type: "p", text: `Directeur de la publication : ${identity.name}` },
         { type: "p", text: "Activité exercée en tant qu'auto-entrepreneur (micro-entreprise)" },
         { type: "p", text: `SIREN : ${identity.siren}` },
+        { type: "p", text: "TVA non applicable, art. 293 B du CGI" },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
         { type: "p", text: `E-mail : ${identity.email}` },
         { type: "p", text: `Site web : ${links.portfolio}` },
