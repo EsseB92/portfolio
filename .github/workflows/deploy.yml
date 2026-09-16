@@ -46,8 +46,8 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: ./out/
-          # Répertoire distant vu depuis le compte FTP (souvent ./public_html/ ou ./)
-          server-dir: ${{ vars.FTP_SERVER_DIR || './public_html/' }}
+          # Racine du compte FTP = dossier personnel ; le site vit dans domains/erdus.fr/public_html
+          server-dir: ${{ vars.FTP_SERVER_DIR || './domains/erdus.fr/public_html/' }}
           # Le fichier d'état évite de tout renvoyer à chaque déploiement
           state-name: .ftp-deploy-sync-state.json
           exclude: |
