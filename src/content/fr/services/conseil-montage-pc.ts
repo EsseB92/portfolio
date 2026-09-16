@@ -108,7 +108,7 @@ export const content: ServiceContent = {
   },
   cases: {
     title: "Deux cas types",
-    intro: "Deux demandes fréquentes et la façon dont je les traite.",
+    intro: "Deux scénarios types, et non des projets clients : des demandes fréquentes et la façon dont je les traite.",
     items: [
       {
         title: "PC de jeu et de streaming sur une seule machine",
@@ -122,7 +122,7 @@ export const content: ServiceContent = {
         context:
           "Une machine devenue lente pour les jeux récents, avec un budget limité et l'envie de ne pas tout racheter.",
         result:
-          "Diagnostic, remplacement de la carte graphique et du SSD, ajout de mémoire, nettoyage et nouvelle pâte thermique. Performances doublées dans les jeux visés pour une fraction du prix d'un PC neuf.",
+          "Diagnostic, remplacement de la carte graphique et du SSD, ajout de mémoire, nettoyage et nouvelle pâte thermique. Un net gain de performances dans les jeux visés, pour une fraction du prix d'un PC neuf.",
       },
     ],
   },

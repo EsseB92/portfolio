@@ -13,7 +13,7 @@ export const identity = {
   country: "FR",
   email: "contact@erdus.fr",
   /** Micro-entreprise (mentions légales) */
-  siret: "824 177 414 00029",
+  siren: "824 177 414",
   /** Première expérience listée dans le parcours : base des années d'expérience */
   careerStartYear: 2015,
   /** Délai de réponse annoncé, en heures */

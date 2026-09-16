@@ -115,7 +115,7 @@ export const content: ServiceContent = {
   },
   cases: {
     title: "Two typical setups",
-    intro: "Two configurations I put in place for mid-sized channels.",
+    intro: "Two typical scenarios, not client projects, to illustrate what I can set up for a mid-sized channel.",
     items: [
       {
         title: "Community Discord server linked to Twitch",
@@ -127,7 +127,7 @@ export const content: ServiceContent = {
       {
         title: "Interactive overlay and smart home driven by chat",
         context:
-          "A streamer wanted viewers to act on the set and cameras with channel points, without breaking the flow of the stream.",
+          "A streamer wants viewers to act on the set and cameras with channel points, without breaking the flow of the stream.",
         result:
           "A Twitch bot connected to Home Assistant and OBS: rewards that change light colors, trigger a scene or a sound, with cooldowns and queues shown in the overlay. Rewards are editable from Discord.",
       },

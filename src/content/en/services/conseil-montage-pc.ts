@@ -108,7 +108,7 @@ export const content: ServiceContent = {
   },
   cases: {
     title: "Two typical requests",
-    intro: "Two frequent requests and how I handle them.",
+    intro: "Two typical scenarios, not client projects: frequent requests and how I handle them.",
     items: [
       {
         title: "Gaming and streaming on a single machine",
@@ -122,7 +122,7 @@ export const content: ServiceContent = {
         context:
           "A machine that became slow for recent games, with a limited budget and no wish to buy everything again.",
         result:
-          "Diagnosis, replacement of the graphics card and SSD, added memory, cleaning and fresh thermal paste. Performance doubled in the target games for a fraction of the price of a new PC.",
+          "Diagnosis, replacement of the graphics card and SSD, added memory, cleaning and fresh thermal paste. A clear performance gain in the target games, for a fraction of the price of a new PC.",
       },
     ],
   },

@@ -16,7 +16,7 @@ export const legal: LegalPageContent = {
       blocks: [
         { type: "p", text: `${identity.name} — Freelance web developer` },
         { type: "p", text: "Sole trader under the French micro-entreprise scheme" },
-        { type: "p", text: `SIRET: ${identity.siret}` },
+        { type: "p", text: `SIREN: ${identity.siren}` },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
         { type: "p", text: `Email: ${identity.email}` },
         { type: "p", text: `Website: ${links.portfolio}` },

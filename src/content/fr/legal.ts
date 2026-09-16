@@ -16,7 +16,7 @@ export const legal: LegalPageContent = {
       blocks: [
         { type: "p", text: `${identity.name} — Développeur web freelance` },
         { type: "p", text: "Activité exercée en tant qu'auto-entrepreneur (micro-entreprise)" },
-        { type: "p", text: `SIRET : ${identity.siret}` },
+        { type: "p", text: `SIREN : ${identity.siren}` },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
         { type: "p", text: `E-mail : ${identity.email}` },
         { type: "p", text: `Site web : ${links.portfolio}` },

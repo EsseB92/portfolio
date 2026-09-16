@@ -117,7 +117,7 @@ export const content: ServiceContent = {
   cases: {
     title: "Deux cas types",
     intro:
-      "Deux configurations que je mets en place pour des chaînes de taille moyenne.",
+      "Deux scénarios types, et non des projets clients, pour illustrer ce que je peux mettre en place sur une chaîne de taille moyenne.",
     items: [
       {
         title: "Serveur Discord de communauté relié à Twitch",
@@ -129,7 +129,7 @@ export const content: ServiceContent = {
       {
         title: "Overlay interactif et domotique pilotés par le chat",
         context:
-          "Un streamer voulait que ses viewers puissent agir sur son décor et ses caméras avec les points de chaîne, sans casser le rythme du stream.",
+          "Un streamer veut que ses viewers puissent agir sur son décor et ses caméras avec les points de chaîne, sans casser le rythme du stream.",
         result:
           "Bot Twitch relié à Home Assistant et OBS : récompenses qui changent la couleur des lumières, déclenchent une scène ou un son, avec cooldowns et files d'attente affichées dans l'overlay. Les récompenses sont modifiables depuis Discord.",
       },
