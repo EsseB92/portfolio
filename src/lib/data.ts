@@ -28,7 +28,6 @@ export const links = {
   games: "https://game.erdus.fr",
   booking: "https://rdv.erdus.fr",
   portfolio3d: "https://3-d-portfolio-one-drab.vercel.app/",
-  manufacturist: "https://manufacturist.com/",
   utlb: "https://op-utlb.fr/",
 } as const;
 

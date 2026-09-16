@@ -15,6 +15,7 @@ export const legal: LegalPageContent = {
       title: "Publisher",
       blocks: [
         { type: "p", text: `${identity.name} — Freelance web developer` },
+        { type: "p", text: `Publication director: ${identity.name}` },
         { type: "p", text: "Sole trader under the French micro-entreprise scheme" },
         { type: "p", text: `SIREN: ${identity.siren}` },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
@@ -131,7 +132,11 @@ export const privacy: LegalPageContent = {
         { type: "h3", text: "Browsing data" },
         {
           type: "p",
-          text: "This site has no tracking tool (Google Analytics, Hotjar, advertising pixels, etc.). No browsing data is collected.",
+          text: "This site has no tracking tool (Google Analytics, Hotjar, advertising pixels, etc.) and collects no browsing data itself.",
+        },
+        {
+          type: "p",
+          text: "Like any hosting provider, Hostinger keeps technical connection logs (IP address, requested page, date and time, browser) for security and diagnostic purposes, for a limited period and under its own responsibility. The site publisher does not use these logs.",
         },
         { type: "h3", text: "Cookies" },
         {

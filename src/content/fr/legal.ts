@@ -15,6 +15,7 @@ export const legal: LegalPageContent = {
       title: "Éditeur du site",
       blocks: [
         { type: "p", text: `${identity.name} — Développeur web freelance` },
+        { type: "p", text: `Directeur de la publication : ${identity.name}` },
         { type: "p", text: "Activité exercée en tant qu'auto-entrepreneur (micro-entreprise)" },
         { type: "p", text: `SIREN : ${identity.siren}` },
         { type: "p", text: `${identity.locality}, ${identity.region}, France` },
@@ -132,12 +133,16 @@ export const privacy: LegalPageContent = {
         },
         {
           type: "p",
-          text: "L'acheminement du formulaire est assuré par Web3Forms (Web3Forms, service d'envoi de formulaires), qui agit en qualité de sous-traitant : il transmet votre message par e-mail à l'éditeur du site et ne l'exploite pas à d'autres fins. Le site étant statique, aucune donnée n'est traitée sur le serveur d'hébergement.",
+          text: "L'acheminement du formulaire est assuré par Web3Forms, service d'envoi de formulaires, qui agit en qualité de sous-traitant : il transmet votre message par e-mail à l'éditeur du site et ne l'exploite pas à d'autres fins. Le site étant statique, aucune donnée n'est traitée sur le serveur d'hébergement.",
         },
         { type: "h3", text: "Données de navigation" },
         {
           type: "p",
-          text: "Ce site ne dispose d'aucun outil de suivi (Google Analytics, Hotjar, pixels publicitaires, etc.). Aucune donnée de navigation n'est collectée.",
+          text: "Ce site ne dispose d'aucun outil de suivi (Google Analytics, Hotjar, pixels publicitaires, etc.) et ne collecte lui-même aucune donnée de navigation.",
+        },
+        {
+          type: "p",
+          text: "Comme tout hébergeur, Hostinger conserve des journaux techniques de connexion (adresse IP, page demandée, date et heure, navigateur) à des fins de sécurité et de diagnostic, pour une durée limitée et sous sa propre responsabilité. Ces journaux ne sont pas exploités par l'éditeur du site.",
         },
         { type: "h3", text: "Cookies" },
         {

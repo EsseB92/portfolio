@@ -169,7 +169,7 @@ export const home: HomeContent = {
         description:
           "WordPress e-commerce site tuned for performance: shorter loading times and a smoother checkout.",
         tags: ["WordPress", "E-commerce", "Performance"],
-        url: links.manufacturist,
+        url: null,
         service: "creation-site-web",
       },
       {
