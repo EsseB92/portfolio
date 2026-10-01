@@ -29,6 +29,14 @@
 DirectoryIndex index.html
 Options -Indexes -MultiViews
 
+# ---- Fichiers cachés (dotfiles) : jamais servis (PF-08) -------------------
+# Bloque .ftp-deploy-sync-state.json (manifeste de déploiement), un éventuel
+# .env, .git, etc. Les fichiers du challenge ACME ont un nom sans point de
+# tête (ils sont sous .well-known/acme-challenge/<jeton>), donc non bloqués.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
 # ---- Page 404 personnalisée (générée par Next : out/404.html) ------------
 ErrorDocument 404 /404.html
 
