@@ -26,6 +26,7 @@ export const links = {
   malt: "https://www.malt.fr/profile/bertrandsudre",
   portfolio: "https://erdus.fr",
   games: "https://game.erdus.fr",
+  notes: "https://note.erdus.fr",
   booking: "https://rdv.erdus.fr",
   portfolio3d: "https://3-d-portfolio-one-drab.vercel.app/",
   utlb: "https://op-utlb.fr/",
