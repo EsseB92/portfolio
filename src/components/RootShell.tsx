@@ -1,3 +1,4 @@
+import Analytics from "@/components/Analytics";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
@@ -15,7 +16,7 @@ type Props = {
 
 /**
  * Enveloppe commune aux deux root layouts (FR et EN) : <html lang>, polices,
- * header, footer, révélation au scroll et @graph JSON-LD.
+ * header, footer, révélation au scroll, @graph JSON-LD et mesure d'audience.
  */
 export default function RootShell({ locale, children }: Props) {
   const ui = getUi(locale);
@@ -35,6 +36,7 @@ export default function RootShell({ locale, children }: Props) {
         <Footer locale={locale} />
         <ScrollReveal />
         <JsonLd data={rootGraph(locale)} />
+        <Analytics />
       </body>
     </html>
   );
