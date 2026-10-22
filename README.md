@@ -98,6 +98,14 @@ Export statique : la CSP est servie par le `.htaccess`. Sans nonce par requête,
 en-têtes (HSTS, `X-Content-Type-Options`, `Referrer-Policy`,
 `Permissions-Policy`, COOP/CORP) restent stricts.
 
+## Mesure d'audience
+
+[GoatCounter](https://erdus.goatcounter.com), sans cookie. Le script et le
+comptage des navigations client sont dans `src/components/Analytics.tsx`. La CSP
+autorise `gc.zgo.at` en `script-src` et `erdus.goatcounter.com` en
+`connect-src` et `img-src`. Les sous-domaines ont leurs propres sites
+GoatCounter (`erdus-game`, `erdus-note`) dans le même compte.
+
 ## Déploiement
 
 Voir `docs/hostinger.md`.

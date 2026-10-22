@@ -76,7 +76,7 @@ export const legal: LegalPageContent = {
       blocks: [
         {
           type: "p",
-          text: "Ce site n'utilise pas de cookies de traçage ou publicitaires. Aucun outil d'analyse de trafic tiers n'est intégré.",
+          text: "Ce site n'utilise aucun cookie. La mesure d'audience (GoatCounter) fonctionne sans cookie et sans identifiant stocké sur votre appareil.",
         },
       ],
     },
@@ -139,7 +139,7 @@ export const privacy: LegalPageContent = {
         { type: "h3", text: "Données de navigation" },
         {
           type: "p",
-          text: "Ce site ne dispose d'aucun outil de suivi (Google Analytics, Hotjar, pixels publicitaires, etc.) et ne collecte lui-même aucune donnée de navigation.",
+          text: "Ce site mesure son audience avec GoatCounter, un outil de statistiques sans cookie. Pour chaque page vue, il enregistre la page consultée, le site d'origine, le navigateur, le système, la taille d'écran et le pays déduit de l'adresse IP. L'adresse IP elle-même n'est pas conservée et aucun identifiant n'est déposé sur votre appareil : vous ne pouvez pas être suivi d'un site à l'autre. Les statistiques sont agrégées et servent uniquement à améliorer le site. Aucun outil publicitaire ou de profilage (Google Analytics, Hotjar, pixels publicitaires, etc.) n'est utilisé.",
         },
         {
           type: "p",
@@ -148,7 +148,7 @@ export const privacy: LegalPageContent = {
         { type: "h3", text: "Cookies" },
         {
           type: "p",
-          text: "Ce site n'utilise aucun cookie de traçage, publicitaire ou analytique. Les polices sont hébergées sur le site : aucune ressource externe n'est chargée lors de la navigation.",
+          text: "Ce site n'utilise aucun cookie, y compris pour la mesure d'audience. Les polices sont hébergées sur le site ; la seule ressource externe chargée pendant la navigation est le script de statistiques GoatCounter.",
         },
       ],
     },
@@ -158,6 +158,10 @@ export const privacy: LegalPageContent = {
         {
           type: "p",
           text: "Le traitement des données du formulaire de contact repose sur votre consentement explicite (article 6.1.a du RGPD) : en soumettant le formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.",
+        },
+        {
+          type: "p",
+          text: "La mesure d'audience repose sur l'intérêt légitime de l'éditeur à connaître la fréquentation de son site (article 6.1.f du RGPD). Elle se limite à des statistiques agrégées ; aucune information n'étant déposée ni lue sur votre appareil, elle ne requiert pas de consentement préalable.",
         },
       ],
     },

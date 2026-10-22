@@ -53,7 +53,7 @@ ErrorDocument 404 /404.html
   # CSP : site statique, donc pas de nonce par requête. 'unsafe-inline' est
   # requis pour les scripts inline de Next (données RSC) et le JSON-LD.
   # Web3Forms reçoit le formulaire de contact (fetch + POST sans JavaScript).
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://erdus.goatcounter.com; font-src 'self'; connect-src 'self' https://api.web3forms.com https://erdus.goatcounter.com; form-action 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 
   # Assets Next (nom haché) : cache long immuable
   <FilesMatch "\.(js|css|woff2|png|jpg|jpeg|gif|svg|webp|avif|ico)$">

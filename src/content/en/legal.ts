@@ -73,7 +73,7 @@ export const legal: LegalPageContent = {
       blocks: [
         {
           type: "p",
-          text: "This site does not use tracking or advertising cookies. No third-party analytics tool is integrated.",
+          text: "This site uses no cookies. Audience measurement (GoatCounter) works without cookies and without any identifier stored on your device.",
         },
       ],
     },
@@ -133,7 +133,7 @@ export const privacy: LegalPageContent = {
         { type: "h3", text: "Browsing data" },
         {
           type: "p",
-          text: "This site has no tracking tool (Google Analytics, Hotjar, advertising pixels, etc.) and collects no browsing data itself.",
+          text: "This site measures its audience with GoatCounter, a cookie-free analytics tool. For each page view it records the page visited, the referring site, the browser, the operating system, the screen size and the country derived from the IP address. The IP address itself is not stored and no identifier is placed on your device: you cannot be tracked across sites. Statistics are aggregated and used only to improve the site. No advertising or profiling tool (Google Analytics, Hotjar, advertising pixels, etc.) is used.",
         },
         {
           type: "p",
@@ -142,7 +142,7 @@ export const privacy: LegalPageContent = {
         { type: "h3", text: "Cookies" },
         {
           type: "p",
-          text: "This site uses no tracking, advertising or analytics cookies. Fonts are hosted on the site: no external resource is loaded while browsing.",
+          text: "This site uses no cookies, including for audience measurement. Fonts are hosted on the site; the only external resource loaded while browsing is the GoatCounter analytics script.",
         },
       ],
     },
@@ -152,6 +152,10 @@ export const privacy: LegalPageContent = {
         {
           type: "p",
           text: "Processing of contact form data is based on your explicit consent (Article 6(1)(a) GDPR): by submitting the form, you agree that your data is used to handle your request.",
+        },
+        {
+          type: "p",
+          text: "Audience measurement is based on the publisher's legitimate interest in knowing how the site is used (Article 6(1)(f) GDPR). It is limited to aggregated statistics; since nothing is stored on or read from your device, it does not require prior consent.",
         },
       ],
     },
