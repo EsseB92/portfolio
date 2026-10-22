@@ -214,7 +214,11 @@ export const privacy: LegalPageContent = {
       blocks: [
         {
           type: "p",
-          text: "Polices d'écriture — les polices sont hébergées sur ce site. Aucune requête n'est envoyée à Google Fonts ni à un autre service tiers pendant la navigation.",
+          text: "Polices d'écriture — les polices sont hébergées sur ce site. Aucune requête n'est envoyée à Google Fonts.",
+        },
+        {
+          type: "p",
+          text: "Mesure d'audience — GoatCounter (goatcounter.com) agit en qualité de sous-traitant : votre navigateur charge son script depuis gc.zgo.at (version figée, contrôlée par une empreinte d'intégrité) et envoie chaque page vue à erdus.goatcounter.com. Il ne reçoit que les données décrites dans « Données de navigation », sans cookie ni identifiant, et ne les exploite pas à d'autres fins.",
         },
         {
           type: "p",

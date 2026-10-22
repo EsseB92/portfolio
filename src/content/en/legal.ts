@@ -208,7 +208,11 @@ export const privacy: LegalPageContent = {
       blocks: [
         {
           type: "p",
-          text: "Fonts — fonts are hosted on this site. No request is sent to Google Fonts or any other third-party service while browsing.",
+          text: "Fonts — fonts are hosted on this site. No request is sent to Google Fonts.",
+        },
+        {
+          type: "p",
+          text: "Audience measurement — GoatCounter (goatcounter.com) acts as a processor: your browser loads its script from gc.zgo.at (pinned version, checked with an integrity hash) and sends each page view to erdus.goatcounter.com. It only receives the data described under “Browsing data”, with no cookie or identifier, and does not use it for any other purpose.",
         },
         {
           type: "p",
