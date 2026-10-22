@@ -105,7 +105,6 @@ export default function Header({ locale, ui }: Props) {
             labels={{
               portfolio: ui.siteLinks.portfolio,
               games: ui.siteLinks.games,
-              booking: ui.siteLinks.booking,
             }}
           />
           {langLink(

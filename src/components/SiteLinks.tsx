@@ -1,20 +1,19 @@
 /**
- * Liens entre les sites Erdus : Portfolio, Jeux, Réserver.
+ * Liens entre les sites Erdus : Portfolio, Jeux.
  *
  * Composant autonome : aucune dépendance au projet (ni Tailwind, ni data.ts),
- * aucun état client. Copiez ce fichier tel quel sur game.erdus.fr et
- * rdv.erdus.fr. Les couleurs suivent les variables CSS --muted, --foreground
+ * aucun état client. Copiez ce fichier tel quel sur game.erdus.fr. Les couleurs suivent les variables CSS --muted, --foreground
  * et --accent si elles existent, avec des valeurs de repli sinon.
  */
 
-export type SiteLinkId = "portfolio" | "games" | "booking";
+export type SiteLinkId = "portfolio" | "games";
 
 export type SiteLinksProps = {
   /** Site courant : rendu sans lien, marqué aria-current="page" */
   current?: SiteLinkId;
   /** Libellé de la liste pour les lecteurs d'écran */
   label?: string;
-  /** Libellés des trois liens (par défaut en français) */
+  /** Libellés des liens (par défaut en français) */
   labels?: Partial<Record<SiteLinkId, string>>;
   className?: string;
 };
@@ -22,7 +21,6 @@ export type SiteLinksProps = {
 const SITES: ReadonlyArray<{ id: SiteLinkId; href: string; label: string }> = [
   { id: "portfolio", href: "https://erdus.fr/", label: "Portfolio" },
   { id: "games", href: "https://game.erdus.fr/", label: "Jeux" },
-  { id: "booking", href: "https://rdv.erdus.fr/", label: "Réserver" },
 ];
 
 const css = `

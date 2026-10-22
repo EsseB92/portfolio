@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Le jeton GITHUB_TOKEN n'a besoin que de lire le dépôt
+permissions:
+  contents: read
+
 concurrency:
   group: deploy-hostinger
   cancel-in-progress: false
@@ -16,12 +20,12 @@ jobs:
     environment: production
     steps:
       - name: Checkout (historique complet pour les lastmod du sitemap)
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
       - name: Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 20
           cache: npm
@@ -38,13 +42,17 @@ jobs:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
 
       - name: Déploiement FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          # security reste à loose (défaut) : le certificat FTPS d'Hostinger est
+          # *.hstgr.io, il ne correspond ni à ftp.erdus.fr ni à l'IP, donc strict
+          # échouerait. Passer à strict seulement si FTP_SERVER vise un hôte
+          # *.hstgr.io vérifié (PF-06).
           local-dir: ./out/
           # Racine du compte FTP = dossier personnel ; le site vit dans domains/erdus.fr/public_html
           server-dir: ${{ vars.FTP_SERVER_DIR || './domains/erdus.fr/public_html/' }}

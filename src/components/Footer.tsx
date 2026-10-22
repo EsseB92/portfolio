@@ -50,11 +50,6 @@ export default function Footer({ locale }: Props) {
                 {ui.siteLinks.games} — game.erdus.fr
               </a>
             </li>
-            <li>
-              <a href={links.booking} className="transition-colors hover:text-foreground">
-                {ui.siteLinks.booking} — rdv.erdus.fr
-              </a>
-            </li>
           </ul>
         </div>
         <nav aria-label={ui.footer.servicesTitle}>
