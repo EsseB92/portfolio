@@ -138,16 +138,32 @@ export const home: HomeContent = {
   projects: {
     title: "Projets",
     intro:
-      "Une sélection de réalisations récentes, du portfolio immersif au site e-commerce optimisé.",
+      "Une sélection de réalisations récentes, de l'application mobile au site e-commerce optimisé.",
     serviceLinkPrefix: "Offre associée :",
     items: [
       {
         title: "Erdus Games",
         description:
-          "Jeu web en deux modes : Depixelize (l'image se dépixélise, à deviner avant qu'elle ne soit nette) et Guess (un indice de plus à chaque erreur). Cinq univers, quatre niveaux, JavaScript vanilla et Canvas, données via les API RAWG, TMDB, AniList et flagcdn.",
+          "Jeu web en deux modes : Depixelize (l'image se dépixélise, à deviner avant qu'elle ne soit nette) et Guess (un indice de plus à chaque erreur). Neuf thèmes, quatre niveaux, défi du jour et défis entre amis, installable sur mobile (PWA). JavaScript vanilla et Canvas, données via les API RAWG, TMDB, AniList et flagcdn.",
         tags: ["JavaScript", "Canvas", "API REST"],
         url: links.games,
         service: "dev-streaming",
+      },
+      {
+        title: "Cadence",
+        description:
+          "Application Android de podomètre social, gratuite et sans publicité : groupes, classements et défis entre amis. Le comptage des pas tourne en arrière-plan sans GPS. Expo, React Native et TypeScript, module natif Kotlin, back-end Supabase.",
+        tags: ["React Native", "Kotlin", "Supabase"],
+        url: null,
+        service: "creation-site-web",
+      },
+      {
+        title: "Carnet",
+        description:
+          "Application web de prise de notes, hors ligne et sans compte : Markdown léger, tags, recherche instantanée, dictée vocale, corbeille et export. Les notes ne quittent pas l'appareil. JavaScript vanilla, testée avec Playwright.",
+        tags: ["PWA", "IndexedDB", "Playwright"],
+        url: links.notes,
+        service: "creation-site-web",
       },
       {
         title: "Erdus",

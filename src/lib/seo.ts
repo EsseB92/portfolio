@@ -243,13 +243,13 @@ export function rootGraph(locale: Locale) {
           addressRegion: identity.region,
           addressCountry: identity.country,
         },
-        sameAs: [links.github, links.linkedin, links.malt, links.games],
+        sameAs: [links.github, links.linkedin, links.malt, links.games, links.notes],
       },
     ],
   };
 }
 
-/** Home : ItemList des quatre offres + FAQPage (FAQ visible sur la page). */
+/** Home : ItemList des quatre offres, ItemList des projets + FAQPage (FAQ visible sur la page). */
 export function homeGraph(locale: Locale) {
   const home = getHome(locale);
   return {
@@ -266,6 +266,24 @@ export function homeGraph(locale: Locale) {
           position: i + 1,
           name: service.label,
           url: url(service.id, locale),
+        })),
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${url("home", locale)}#projets`,
+        name: home.projects.title,
+        numberOfItems: home.projects.items.length,
+        itemListElement: home.projects.items.map((project, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "CreativeWork",
+            name: project.title,
+            description: project.description,
+            keywords: project.tags.join(", "),
+            creator: { "@id": PERSON_ID },
+            ...(project.url ? { url: project.url } : {}),
+          },
         })),
       },
       faqPage(locale, "home", home.faq.items),

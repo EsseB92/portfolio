@@ -137,16 +137,32 @@ export const home: HomeContent = {
   projects: {
     title: "Projects",
     intro:
-      "A selection of recent work, from an immersive portfolio to a performance-tuned online store.",
+      "A selection of recent work, from a mobile app to a performance-tuned online store.",
     serviceLinkPrefix: "Related service:",
     items: [
       {
         title: "Erdus Games",
         description:
-          "Web game with two modes: Depixelize (the image sharpens progressively, guess it before it is clear) and Guess (one more clue after each mistake). Five universes, four levels, vanilla JavaScript and Canvas, data from the RAWG, TMDB, AniList and flagcdn APIs.",
+          "Web game with two modes: Depixelize (the image sharpens progressively, guess it before it is clear) and Guess (one more clue after each mistake). Nine themes, four levels, a daily challenge and challenges between friends, installable on mobile (PWA). Vanilla JavaScript and Canvas, data from the RAWG, TMDB, AniList and flagcdn APIs.",
         tags: ["JavaScript", "Canvas", "REST API"],
         url: links.games,
         service: "dev-streaming",
+      },
+      {
+        title: "Cadence",
+        description:
+          "Free, ad-free social step counter for Android: groups, leaderboards and challenges between friends. Steps are counted in the background without GPS. Expo, React Native and TypeScript, a native Kotlin module, Supabase back end.",
+        tags: ["React Native", "Kotlin", "Supabase"],
+        url: null,
+        service: "creation-site-web",
+      },
+      {
+        title: "Carnet",
+        description:
+          "Offline note-taking web app with no account: light Markdown, tags, instant search, voice dictation, trash and export. Notes never leave the device. Vanilla JavaScript, tested with Playwright.",
+        tags: ["PWA", "IndexedDB", "Playwright"],
+        url: links.notes,
+        service: "creation-site-web",
       },
       {
         title: "Erdus",

@@ -15,7 +15,7 @@ Le site est un export statique Next.js (`out/`), déployé en FTPS par GitHub Ac
    sur `erdus.fr` et `www.erdus.fr`. Ne pas activer « Forcer HTTPS » dans hPanel
    si vous préférez laisser le `.htaccess` gérer la redirection (les deux
    fonctionnent, mais une seule méthode évite les doubles redirections).
-4. **Sous-domaines** : `game.erdus.fr` et `rdv.erdus.fr` sont d'autres sites.
+4. **Sous-domaines** : `game.erdus.fr`, `note.erdus.fr` et `rdv.erdus.fr` sont d'autres sites (rdv : simple `.htaccess` de redirection vers l'agenda de rendez-vous, déposé à la main dans `public_html/rdv/`).
    Créez-les dans *Domaines → Sous-domaines* avec leur propre dossier
    (par exemple `public_html/game` ou un dossier hors `public_html`), sans
    toucher au `.htaccess` racine. HSTS avec `includeSubDomains` est activé :

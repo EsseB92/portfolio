@@ -37,6 +37,9 @@ Toutes les offres commencent par un cadrage gratuit de 30 minutes : https://rdv.
 
 ## Projets
 
+- Erdus Games (https://game.erdus.fr) : jeux web de devinettes (Depixelize, Guess), neuf thèmes, défi du jour, PWA en JavaScript vanilla et Canvas
+- Cadence : application Android de podomètre social, gratuite et sans publicité (Expo, React Native, Kotlin, Supabase)
+- Carnet (https://note.erdus.fr) : application web de prise de notes hors ligne et sans compte (PWA, IndexedDB)
 - Erdus (https://erdus.fr) : portfolio Next.js + TypeScript, SEO multilingue
 - Portfolio 3D : expérience immersive Three.js
 - Manufacturist : e-commerce WordPress optimisé performance
@@ -46,6 +49,7 @@ Toutes les offres commencent par un cadrage gratuit de 30 minutes : https://rdv.
 
 - Portfolio et services : https://erdus.fr
 - Jeux : https://game.erdus.fr
+- Notes : https://note.erdus.fr
 - Réservation d'un cadrage : https://rdv.erdus.fr
 
 ## Contact
