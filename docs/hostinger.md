@@ -22,8 +22,8 @@ Le site est un export statique Next.js (`out/`), déployé en FTPS par GitHub Ac
    ces sous-domaines doivent aussi être servis en HTTPS.
 5. **Compte FTP** : *Fichiers → Comptes FTP* → créez un compte dédié au
    déploiement. Notez l'hôte (`ftp.erdus.fr` ou l'IP), l'identifiant et le mot de
-   passe. Compte principal : hôte `45.13.252.81`, utilisateur `u997960870`, racine =
-   dossier personnel (`/home/u997960870`).
+   passe. Compte principal : hôte `<IP_DU_SERVEUR>`, utilisateur `<IDENTIFIANT_HOSTINGER>`,
+   racine = dossier personnel (`/home/<IDENTIFIANT_HOSTINGER>`).
 6. **Cache CDN** : le CDN Hostinger (`Server: hcdn`) garde les pages HTML en
    cache selon leur en-tête `Cache-Control`. Le nouveau `.htaccess` sert le HTML
    en `max-age=0, must-revalidate`, donc les déploiements suivants sont visibles
