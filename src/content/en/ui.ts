@@ -20,7 +20,6 @@ export const ui: UiStrings = {
     label: "Erdus websites",
     portfolio: "Portfolio",
     games: "Games",
-    booking: "Book a call",
   },
   lang: {
     switchLabel: "Lire cette page en français",

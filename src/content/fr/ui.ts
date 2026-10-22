@@ -18,7 +18,6 @@ export const ui = {
     label: "Sites Erdus",
     portfolio: "Portfolio",
     games: "Jeux",
-    booking: "Réserver",
   },
   lang: {
     switchLabel: "Read this page in English",

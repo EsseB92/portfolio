@@ -243,7 +243,7 @@ export function rootGraph(locale: Locale) {
           addressRegion: identity.region,
           addressCountry: identity.country,
         },
-        sameAs: [links.github, links.linkedin, links.malt, links.games, links.booking],
+        sameAs: [links.github, links.linkedin, links.malt, links.games],
       },
     ],
   };
