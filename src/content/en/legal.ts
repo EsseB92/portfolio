@@ -166,6 +166,10 @@ export const privacy: LegalPageContent = {
           type: "p",
           text: "Emails received through the contact form are kept for as long as needed to handle your request, then deleted within a maximum of 12 months.",
         },
+        {
+          type: "p",
+          text: "Audience measurement statistics (GoatCounter) are kept for 25 months, then deleted automatically.",
+        },
       ],
     },
     {

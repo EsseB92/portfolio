@@ -172,6 +172,10 @@ export const privacy: LegalPageContent = {
           type: "p",
           text: "Les e-mails reçus via le formulaire de contact sont conservés le temps nécessaire au traitement de votre demande, puis supprimés dans un délai maximal de 12 mois.",
         },
+        {
+          type: "p",
+          text: "Les statistiques de mesure d'audience (GoatCounter) sont conservées 25 mois, puis supprimées automatiquement.",
+        },
       ],
     },
     {
