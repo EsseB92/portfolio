@@ -23,6 +23,9 @@ npm run lint   # ESLint
 | `/services/gestion-projet-digital/`| `/en/services/digital-project-management/`| pro    |
 | `/services/dev-streaming/`         | `/en/services/streaming-development/`     | gaming |
 | `/services/conseil-montage-pc/`    | `/en/services/custom-pc-building/`        | gaming |
+| `/projets/erdus-games/`            | `/en/projects/erdus-games/`               | projet |
+| `/projets/cadence/`                | `/en/projects/cadence/`                   | projet |
+| `/projets/carnet/`                 | `/en/projects/carnet/`                    | projet |
 
 Chaque page déclare un canonical auto-référent et des hreflang `fr`, `en`,
 `x-default`. Le sitemap reprend ces alternates.
@@ -32,6 +35,8 @@ Chaque page déclare un canonical auto-référent et des hreflang `fr`, `en`,
 - **Données neutres** (identité, liens, technos) : `src/lib/data.ts`.
 - **Textes** : `src/content/fr/` et `src/content/en/` (home, hub, pistes,
   interface, une fiche par offre dans `services/`).
+- **Pages projet** : textes dans `src/content/{fr,en}/projects/`, données neutres
+  (site public, offre associée, vidéo, type schema.org) dans `src/lib/projects.ts`.
 - **Catalogue des offres** (piste, icône, offre complémentaire, slug de
   réservation) : `src/lib/services.ts`.
 - **Routes et slugs traduits** : `src/lib/i18n.ts`.
@@ -55,6 +60,7 @@ espacements sont identiques sur les deux pistes.
 | `src/components/HomePage.tsx`          | Page d'accueil (héro, pistes, méthode, compétences, parcours, projets, FAQ, contact) |
 | `src/components/HubPage.tsx`           | Hub `/services` : quatre offres en deux groupes             |
 | `src/components/ServicePage.tsx`       | Gabarit des pages service                                   |
+| `src/components/ProjectPage.tsx`       | Gabarit des pages projet (Erdus Games, Cadence, Carnet)     |
 | `src/components/SiteLinks.tsx`         | Liens Portfolio / Jeux / Réserver, autonome et réutilisable |
 | `src/components/ContactForm.tsx`       | Formulaire de contact (Web3Forms, fonctionne sans JS)       |
 | `src/app/og/*.png/route.tsx`           | Images Open Graph (home, pro, gaming) générées au build     |
@@ -79,7 +85,8 @@ honeypot (`botcheck`) filtre les robots.
   Open Graph, Twitter Card, robots.
 - Données structurées schema.org : `Person`, `WebSite`, `ProfilePage`,
   `ProfessionalService` (commun) ; `ItemList` + `FAQPage` (home) ;
-  `Service` + `BreadcrumbList` + `FAQPage` (pages service).
+  `Service` + `BreadcrumbList` + `FAQPage` (pages service) ; `BreadcrumbList` +
+  `WebApplication` ou `MobileApplication` (pages projet).
 - `sitemap.xml` avec hreflang et `lastmod` lus dans git, `robots.txt`,
   `manifest.webmanifest`, `llms.txt`.
 

@@ -38,6 +38,12 @@ export const routes = {
     fr: "/services/conseil-montage-pc/",
     en: "/en/services/custom-pc-building/",
   },
+  "erdus-games": {
+    fr: "/projets/erdus-games/",
+    en: "/en/projects/erdus-games/",
+  },
+  cadence: { fr: "/projets/cadence/", en: "/en/projects/cadence/" },
+  carnet: { fr: "/projets/carnet/", en: "/en/projects/carnet/" },
   legal: { fr: "/mentions-legales/", en: "/en/legal-notice/" },
   privacy: { fr: "/politique-de-confidentialite/", en: "/en/privacy-policy/" },
   thanks: { fr: "/merci/", en: "/en/thank-you/" },
