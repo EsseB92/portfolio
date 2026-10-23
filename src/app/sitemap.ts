@@ -3,11 +3,19 @@ export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { locales, routes, url, type RouteId } from "@/lib/i18n";
 import { lastModified } from "@/lib/lastmod";
+import { isProjectId } from "@/lib/projects";
 
 type IndexableRoute = Exclude<RouteId, "thanks">;
 
 /** Fichiers dont l'historique git donne la date réelle de modification. */
 function sourcesFor(id: IndexableRoute): readonly string[] {
+  if (isProjectId(id)) {
+    return [
+      `src/content/fr/projects/${id}.ts`,
+      `src/content/en/projects/${id}.ts`,
+      "src/components/ProjectPage.tsx",
+    ];
+  }
   switch (id) {
     case "home":
       return [
@@ -45,7 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const lastMod = lastModified(sourcesFor(id));
     const languages = Object.fromEntries(locales.map((l) => [l, url(id, l)]));
     const priority =
-      id === "home" ? 1 : id === "services" ? 0.9 : id === "legal" || id === "privacy" ? 0.3 : 0.8;
+      id === "home"
+        ? 1
+        : id === "services"
+          ? 0.9
+          : id === "legal" || id === "privacy"
+            ? 0.3
+            : isProjectId(id)
+              ? 0.7
+              : 0.8;
     return locales.map((locale) => ({
       url: url(id, locale),
       lastModified: lastMod,

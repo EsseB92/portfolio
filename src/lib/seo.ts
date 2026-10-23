@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getHome, getHub, getService, getServices, getUi } from "@/content";
+import { getHome, getHub, getProject, getService, getServices, getUi } from "@/content";
 import { SITE_URL, allSkills, identity, links } from "@/lib/data";
 import {
   alternatesFor,
@@ -10,8 +10,9 @@ import {
   type Locale,
   type RouteId,
 } from "@/lib/i18n";
+import { projectMeta, type ProjectId } from "@/lib/projects";
 import { serviceIds, serviceMeta, type ServiceId, type Track } from "@/lib/services";
-import { isoDuration, videoFiles } from "@/lib/videos";
+import { isoDuration, videoFiles, type ProjectVideo } from "@/lib/videos";
 import type { LegalPageContent } from "@/types/legal";
 
 /* ---------------------------------------------------------------------------
@@ -155,6 +156,24 @@ export function serviceMetadata(locale: Locale, id: ServiceId): Metadata {
   };
 }
 
+export function projectMetadata(locale: Locale, id: ProjectId): Metadata {
+  const project = getProject(locale, id);
+  const track = serviceMeta[projectMeta[id].service].track;
+  const title = `${project.seo.title} | ${identity.brand}`;
+  return {
+    title: project.seo.title,
+    description: project.seo.description,
+    alternates: alternatesFor(id, locale),
+    ...social({
+      locale,
+      title,
+      description: project.seo.description,
+      url: url(id, locale),
+      image: OG_IMAGE[track],
+    }),
+  };
+}
+
 export function legalMetadata(
   locale: Locale,
   id: Extract<RouteId, "legal" | "privacy">,
@@ -283,22 +302,17 @@ export function homeGraph(locale: Locale) {
             description: project.description,
             keywords: project.tags.join(", "),
             creator: { "@id": PERSON_ID },
-            ...(project.url ? { url: project.url } : {}),
-            ...(project.video
+            // Projet avec page dédiée : url = la page, le site en ligne en sameAs
+            ...(project.page
               ? {
-                  video: {
-                    "@type": "VideoObject",
-                    name: `${project.title} — ${getUi(locale).video.jsonLdName}`,
-                    description: project.description,
-                    thumbnailUrl: `${SITE_URL}${videoFiles(project.video).poster}`,
-                    contentUrl: `${SITE_URL}${videoFiles(project.video).mp4}`,
-                    uploadDate: project.video.uploadDate,
-                    duration: isoDuration(project.video.seconds),
-                    inLanguage: "fr",
-                    width: 1920,
-                    height: 1080,
-                  },
+                  url: url(project.page, locale),
+                  ...(project.url ? { sameAs: project.url } : {}),
                 }
+              : project.url
+                ? { url: project.url }
+                : {}),
+            ...(project.video
+              ? { video: videoObject(locale, project.title, project.description, project.video) }
               : {}),
           },
         })),
@@ -345,6 +359,50 @@ export function serviceGraph(locale: Locale, id: ServiceId) {
   };
 }
 
+/** Page projet : BreadcrumbList + WebApplication / MobileApplication. */
+export function projectGraph(locale: Locale, id: ProjectId) {
+  const project = getProject(locale, id);
+  const meta = projectMeta[id];
+  const ui = getUi(locale);
+  const pageUrl = url(id, locale);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: ui.breadcrumb.home, item: url("home", locale) },
+          // Pas de page liste des projets : la section #projets de la home en tient lieu
+          { "@type": "ListItem", position: 2, name: ui.breadcrumb.projects, item: `${url("home", locale)}#projets` },
+          { "@type": "ListItem", position: 3, name: project.label, item: pageUrl },
+        ],
+      },
+      {
+        "@type": meta.schema.type,
+        "@id": `${url(id, "fr")}#app`,
+        name: project.label,
+        description: project.jsonLdDescription,
+        applicationCategory: meta.schema.applicationCategory,
+        operatingSystem: meta.schema.operatingSystem,
+        keywords: project.tech.stack.join(", "),
+        featureList: project.features.items.map((item) => item.title),
+        author: { "@id": PERSON_ID },
+        creator: { "@id": PERSON_ID },
+        mainEntityOfPage: pageUrl,
+        // url seulement si le projet est public (Cadence : pas encore sur Google Play)
+        ...(meta.url ? { url: meta.url } : {}),
+        ...(meta.schema.free
+          ? { offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" } }
+          : {}),
+        ...(meta.video
+          ? { video: videoObject(locale, project.label, project.jsonLdDescription, meta.video) }
+          : {}),
+      },
+    ],
+  };
+}
+
 /** Hub : BreadcrumbList + ItemList. */
 export function hubGraph(locale: Locale) {
   const ui = getUi(locale);
@@ -374,6 +432,23 @@ export function hubGraph(locale: Locale) {
         })),
       },
     ],
+  };
+}
+
+/** Vidéo de présentation d'un projet (voix off en français). */
+function videoObject(locale: Locale, name: string, description: string, video: ProjectVideo) {
+  const files = videoFiles(video);
+  return {
+    "@type": "VideoObject",
+    name: `${name} — ${getUi(locale).video.jsonLdName}`,
+    description,
+    thumbnailUrl: `${SITE_URL}${files.poster}`,
+    contentUrl: `${SITE_URL}${files.mp4}`,
+    uploadDate: video.uploadDate,
+    duration: isoDuration(video.seconds),
+    inLanguage: "fr",
+    width: 1920,
+    height: 1080,
   };
 }
 

@@ -8,6 +8,7 @@ import TrackCard from "@/components/TrackCard";
 import { getHome, getService, getUi } from "@/content";
 import { identity, links } from "@/lib/data";
 import { path, url, type Locale } from "@/lib/i18n";
+import { hostname } from "@/lib/projects";
 import { homeGraph } from "@/lib/seo";
 import { trackIds } from "@/lib/services";
 
@@ -146,7 +147,7 @@ export default function HomePage({ locale }: Props) {
         </div>
       </section>
 
-      {/* Projets : chaque projet pointe vers l'offre correspondante */}
+      {/* Projets : chaque projet pointe vers l'offre correspondante ; les projets phares vers leur page */}
       <section id="projets" aria-labelledby="titre-projets" className="border-t border-border">
         <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
           <h2 id="titre-projets" className="text-3xl font-bold tracking-tight">
@@ -162,7 +163,11 @@ export default function HomePage({ locale }: Props) {
                     <ProjectVideo title={project.title} video={project.video} labels={ui.video} />
                   )}
                   <h3 className="text-xl font-semibold">
-                    {project.url ? (
+                    {project.page ? (
+                      <Link href={path(project.page, locale)} className="hover:text-accent">
+                        {project.title}
+                      </Link>
+                    ) : project.url ? (
                       <a href={project.url} rel="noopener" target="_blank" className="hover:text-accent">
                         {project.title}
                         <span className="sr-only">{ui.newTab}</span>
@@ -179,6 +184,21 @@ export default function HomePage({ locale }: Props) {
                       </li>
                     ))}
                   </ul>
+                  {project.page && (
+                    <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                      <Link href={path(project.page, locale)} className="group inline-flex items-center gap-1.5 font-medium text-accent underline-offset-4 hover:underline">
+                        {ui.project.seeProject}
+                        <span className="sr-only"> — {project.title}</span>
+                        <Icon name="arrow" size={14} className="transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                      {project.url && (
+                        <a href={project.url} rel="noopener" target="_blank" className="text-muted underline-offset-4 hover:text-foreground hover:underline">
+                          {hostname(project.url)}
+                          <span className="sr-only">{ui.newTab}</span>
+                        </a>
+                      )}
+                    </p>
+                  )}
                   <p className="mt-5 text-sm text-muted">
                     {home.projects.serviceLinkPrefix}{" "}
                     <Link href={path(service.id, locale)} className="font-medium text-accent underline-offset-4 hover:underline">

@@ -1,3 +1,4 @@
+import type { ProjectId } from "@/lib/projects";
 import type { ServiceId, Track } from "@/lib/services";
 import type { ProjectVideo } from "@/lib/videos";
 
@@ -55,6 +56,38 @@ export type ServiceContent = {
   jsonLd: { name: string; serviceType: string; description: string };
 };
 
+export type ProjectContent = {
+  id: ProjectId;
+  seo: {
+    /** 50-60 caractères, nom du projet + requête visée ; « | Erdus » ajouté par le template */
+    title: string;
+    /** 140-155 caractères */
+    description: string;
+  };
+  /** Nom court : fil d'Ariane, maillage */
+  label: string;
+  hero: {
+    /** Nature du projet, étiquette mono uppercase */
+    eyebrow: string;
+    h1: string;
+    intro: string;
+    /** Statut affiché sous l'intro (ex. « pas encore sur Google Play ») */
+    status?: string;
+    tags: readonly string[];
+  };
+  idea: { paragraphs: readonly string[]; points: readonly string[] };
+  features: { intro?: string; items: readonly { title: string; text: string }[] };
+  tech: {
+    intro: string;
+    items: readonly { title: string; text: string }[];
+    stack: readonly string[];
+  };
+  challenges: { intro?: string; items: readonly { title: string; text: string }[] };
+  cta: { title: string; text: string };
+  /** Description courte reprise dans le JSON-LD SoftwareApplication */
+  jsonLdDescription: string;
+};
+
 export type TrackContent = {
   id: Track;
   /** Étiquette mono uppercase */
@@ -108,6 +141,8 @@ export type HomeContent = {
       tags: readonly string[];
       url: string | null;
       service: ServiceId;
+      /** Page dédiée du projet : le titre de la carte y mène, le site en ligne passe en lien secondaire */
+      page?: ProjectId;
       /** Vidéo de présentation (voix off en français) */
       video?: ProjectVideo;
     }[];

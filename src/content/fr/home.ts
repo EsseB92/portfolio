@@ -149,6 +149,7 @@ export const home: HomeContent = {
         tags: ["JavaScript", "Canvas", "API REST"],
         url: links.games,
         service: "dev-streaming",
+        page: "erdus-games",
         video: videos.games,
       },
       {
@@ -158,6 +159,7 @@ export const home: HomeContent = {
         tags: ["React Native", "Kotlin", "Supabase"],
         url: null,
         service: "creation-site-web",
+        page: "cadence",
         video: videos.cadence,
       },
       {
@@ -167,6 +169,7 @@ export const home: HomeContent = {
         tags: ["PWA", "IndexedDB", "Playwright"],
         url: links.notes,
         service: "creation-site-web",
+        page: "carnet",
         video: videos.notes,
       },
       {

@@ -37,9 +37,9 @@ Toutes les offres commencent par un cadrage gratuit de 30 minutes : https://rdv.
 
 ## Projets
 
-- Erdus Games (https://game.erdus.fr) : jeux web de devinettes (Depixelize, Guess), neuf thèmes, défi du jour, PWA en JavaScript vanilla et Canvas
-- Cadence : application Android de podomètre social, gratuite et sans publicité (Expo, React Native, Kotlin, Supabase)
-- Carnet (https://note.erdus.fr) : application web de prise de notes hors ligne et sans compte (PWA, IndexedDB)
+- Erdus Games (https://game.erdus.fr) : plateforme de jeux de devinettes en ligne, neuf thèmes, modes Image cachée, Indices et Comparaison, défi du jour, marathon et défis entre amis, PWA en JavaScript vanilla et Canvas avec proxy PHP. Page projet : https://erdus.fr/projets/erdus-games/ (anglais : https://erdus.fr/en/projects/erdus-games/)
+- Cadence : application Android de podomètre social, gratuite et sans publicité, comptage des pas en arrière-plan sans GPS, groupes, classements et défis (Expo, React Native, Kotlin, Supabase), pas encore publiée sur Google Play. Page projet : https://erdus.fr/projets/cadence/ (anglais : https://erdus.fr/en/projects/cadence/)
+- Carnet (https://note.erdus.fr) : application web de prise de notes hors ligne et sans compte, Markdown, tags, recherche, dictée, photos (PWA, IndexedDB, Playwright). Page projet : https://erdus.fr/projets/carnet/ (anglais : https://erdus.fr/en/projects/carnet/)
 - Erdus (https://erdus.fr) : portfolio Next.js + TypeScript, SEO multilingue
 - Portfolio 3D : expérience immersive Three.js
 - Manufacturist : e-commerce WordPress optimisé performance
