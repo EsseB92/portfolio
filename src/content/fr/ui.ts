@@ -25,6 +25,14 @@ export const ui = {
   },
   breadcrumb: { label: "Fil d'Ariane", home: "Accueil", services: "Services" },
   newTab: " (nouvel onglet)",
+  video: {
+    watch: "Voir la vidéo",
+    watchOf: "Voir la vidéo de présentation :",
+    close: "Fermer la vidéo",
+    captions: "Français",
+    language: "",
+    jsonLdName: "vidéo de présentation",
+  },
   booking: {
     label: "Réserver un cadrage gratuit — 30 min",
     labelShort: "Cadrage gratuit — 30 min",

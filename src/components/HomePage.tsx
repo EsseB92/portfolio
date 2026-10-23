@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import ContactForm from "@/components/ContactForm";
 import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
+import ProjectVideo from "@/components/ProjectVideo";
 import TrackCard from "@/components/TrackCard";
 import { getHome, getService, getUi } from "@/content";
 import { identity, links } from "@/lib/data";
@@ -157,6 +158,9 @@ export default function HomePage({ locale }: Props) {
               const service = getService(locale, project.service);
               return (
                 <li key={project.title} style={stagger(i)} className="reveal card card-lift flex flex-col p-6">
+                  {project.video && (
+                    <ProjectVideo title={project.title} video={project.video} labels={ui.video} />
+                  )}
                   <h3 className="text-xl font-semibold">
                     {project.url ? (
                       <a href={project.url} rel="noopener" target="_blank" className="hover:text-accent">

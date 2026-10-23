@@ -1,4 +1,5 @@
 import type { ServiceId, Track } from "@/lib/services";
+import type { ProjectVideo } from "@/lib/videos";
 
 export type FaqItem = { question: string; answer: string };
 
@@ -107,6 +108,8 @@ export type HomeContent = {
       tags: readonly string[];
       url: string | null;
       service: ServiceId;
+      /** Vidéo de présentation (voix off en français) */
+      video?: ProjectVideo;
     }[];
   };
   faq: { title: string; items: readonly FaqItem[] };

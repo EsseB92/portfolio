@@ -11,6 +11,7 @@ import {
   type RouteId,
 } from "@/lib/i18n";
 import { serviceIds, serviceMeta, type ServiceId, type Track } from "@/lib/services";
+import { isoDuration, videoFiles } from "@/lib/videos";
 import type { LegalPageContent } from "@/types/legal";
 
 /* ---------------------------------------------------------------------------
@@ -283,6 +284,22 @@ export function homeGraph(locale: Locale) {
             keywords: project.tags.join(", "),
             creator: { "@id": PERSON_ID },
             ...(project.url ? { url: project.url } : {}),
+            ...(project.video
+              ? {
+                  video: {
+                    "@type": "VideoObject",
+                    name: `${project.title} — ${getUi(locale).video.jsonLdName}`,
+                    description: project.description,
+                    thumbnailUrl: `${SITE_URL}${videoFiles(project.video).poster}`,
+                    contentUrl: `${SITE_URL}${videoFiles(project.video).mp4}`,
+                    uploadDate: project.video.uploadDate,
+                    duration: isoDuration(project.video.seconds),
+                    inLanguage: "fr",
+                    width: 1920,
+                    height: 1080,
+                  },
+                }
+              : {}),
           },
         })),
       },
