@@ -1,4 +1,5 @@
 import { links, skillItems } from "@/lib/data";
+import { videos } from "@/lib/videos";
 import type { HomeContent, HubContent } from "@/types/content";
 
 export const home: HomeContent = {
@@ -148,6 +149,7 @@ export const home: HomeContent = {
         tags: ["JavaScript", "Canvas", "API REST"],
         url: links.games,
         service: "dev-streaming",
+        video: videos.games,
       },
       {
         title: "Cadence",
@@ -156,6 +158,7 @@ export const home: HomeContent = {
         tags: ["React Native", "Kotlin", "Supabase"],
         url: null,
         service: "creation-site-web",
+        video: videos.cadence,
       },
       {
         title: "Carnet",
@@ -164,6 +167,7 @@ export const home: HomeContent = {
         tags: ["PWA", "IndexedDB", "Playwright"],
         url: links.notes,
         service: "creation-site-web",
+        video: videos.notes,
       },
       {
         title: "Erdus",
@@ -172,6 +176,7 @@ export const home: HomeContent = {
         tags: ["Next.js", "TypeScript", "SEO"],
         url: links.portfolio,
         service: "creation-site-web",
+        video: videos.portfolio,
       },
       {
         title: "Portfolio 3D",
@@ -196,6 +201,7 @@ export const home: HomeContent = {
         tags: ["WordPress", "Sécurité", "Newsletter"],
         url: links.utlb,
         service: "creation-site-web",
+        video: videos.utlb,
       },
     ],
   },

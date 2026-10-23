@@ -27,6 +27,14 @@ export const ui: UiStrings = {
   },
   breadcrumb: { label: "Breadcrumb", home: "Home", services: "Services" },
   newTab: " (opens in a new tab)",
+  video: {
+    watch: "Watch the video",
+    watchOf: "Watch the presentation video:",
+    close: "Close the video",
+    captions: "French",
+    language: " (in French)",
+    jsonLdName: "presentation video",
+  },
   booking: {
     label: "Book a free 30-min scoping call",
     labelShort: "Free 30-min call",
