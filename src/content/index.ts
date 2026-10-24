@@ -2,6 +2,7 @@ import { home as homeEn, hub as hubEn } from "@/content/en/home";
 import { content as enCadence } from "@/content/en/projects/cadence";
 import { content as enCarnet } from "@/content/en/projects/carnet";
 import { content as enErdusGames } from "@/content/en/projects/erdus-games";
+import { content as enErdusInspector } from "@/content/en/projects/erdus-inspector";
 import { content as enCreationSiteWeb } from "@/content/en/services/creation-site-web";
 import { content as enConseilMontagePc } from "@/content/en/services/conseil-montage-pc";
 import { content as enDevStreaming } from "@/content/en/services/dev-streaming";
@@ -12,6 +13,7 @@ import { home as homeFr, hub as hubFr } from "@/content/fr/home";
 import { content as frCadence } from "@/content/fr/projects/cadence";
 import { content as frCarnet } from "@/content/fr/projects/carnet";
 import { content as frErdusGames } from "@/content/fr/projects/erdus-games";
+import { content as frErdusInspector } from "@/content/fr/projects/erdus-inspector";
 import { content as frCreationSiteWeb } from "@/content/fr/services/creation-site-web";
 import { content as frConseilMontagePc } from "@/content/fr/services/conseil-montage-pc";
 import { content as frDevStreaming } from "@/content/fr/services/dev-streaming";
@@ -54,6 +56,7 @@ const bundles: Record<Locale, LocaleBundle> = {
       "erdus-games": frErdusGames,
       cadence: frCadence,
       carnet: frCarnet,
+      "erdus-inspector": frErdusInspector,
     },
   },
   en: {
@@ -71,6 +74,7 @@ const bundles: Record<Locale, LocaleBundle> = {
       "erdus-games": enErdusGames,
       cadence: enCadence,
       carnet: enCarnet,
+      "erdus-inspector": enErdusInspector,
     },
   },
 };
