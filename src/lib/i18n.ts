@@ -44,6 +44,10 @@ export const routes = {
   },
   cadence: { fr: "/projets/cadence/", en: "/en/projects/cadence/" },
   carnet: { fr: "/projets/carnet/", en: "/en/projects/carnet/" },
+  "erdus-inspector": {
+    fr: "/projets/erdus-inspector/",
+    en: "/en/projects/erdus-inspector/",
+  },
   legal: { fr: "/mentions-legales/", en: "/en/legal-notice/" },
   privacy: { fr: "/politique-de-confidentialite/", en: "/en/privacy-policy/" },
   thanks: { fr: "/merci/", en: "/en/thank-you/" },

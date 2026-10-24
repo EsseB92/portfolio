@@ -172,6 +172,15 @@ export const home: HomeContent = {
         video: videos.notes,
       },
       {
+        title: "Erdus Inspector",
+        description:
+          "Chrome extension for a one-click audit of the open page: security headers, cookies, exposed WordPress version, CDN cache and SEO, with a score, explanations and a Markdown report. No data collected. Dependency-free JavaScript, Manifest V3.",
+        tags: ["Chrome Extension", "Web security", "SEO"],
+        url: links.inspector,
+        service: "creation-site-web",
+        page: "erdus-inspector",
+      },
+      {
         title: "Erdus",
         description:
           "Personal portfolio built with Next.js and TypeScript: multilingual SEO, optimized performance and custom design.",

@@ -64,7 +64,7 @@ export default function ProjectPage({ locale, id }: Props) {
               <div style={stagger(3)} className="hero-enter mt-8 flex flex-wrap items-center gap-4">
                 {meta.url && (
                   <a href={meta.url} rel="noopener" target="_blank" className="btn btn-primary">
-                    {ui.project.visit}
+                    {project.link?.visit ?? ui.project.visit}
                     <span className="sr-only">{ui.newTab}</span>
                     <Icon name="arrow" size={16} />
                   </a>
@@ -81,10 +81,24 @@ export default function ProjectPage({ locale, id }: Props) {
                 ))}
               </ul>
             </div>
-            {meta.video && (
+            {meta.video ? (
               <div style={stagger(4)} className="hero-enter">
                 <ProjectVideo title={project.label} video={meta.video} labels={ui.video} />
               </div>
+            ) : (
+              meta.image && (
+                <div style={stagger(4)} className="hero-enter">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- export statique, image déjà dimensionnée */}
+                  <img
+                    src={meta.image.src}
+                    alt={project.hero.imageAlt ?? ""}
+                    width={meta.image.width}
+                    height={meta.image.height}
+                    decoding="async"
+                    className="w-full rounded-[var(--radius-card)] border border-border"
+                  />
+                </div>
+              )
             )}
           </div>
         </div>
@@ -188,7 +202,7 @@ export default function ProjectPage({ locale, id }: Props) {
           <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-sm">
             {meta.url && (
               <li className="text-muted">
-                {ui.project.liveSite}{" "}
+                {project.link?.live ?? ui.project.liveSite}{" "}
                 <a href={meta.url} rel="noopener" target="_blank" className="font-medium text-accent underline-offset-4 hover:underline">
                   {hostname(meta.url)}
                   <span className="sr-only">{ui.newTab}</span>

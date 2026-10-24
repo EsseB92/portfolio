@@ -73,8 +73,12 @@ export type ProjectContent = {
     intro: string;
     /** Statut affiché sous l'intro (ex. « pas encore sur Google Play ») */
     status?: string;
+    /** Texte alternatif de la capture du héro (projets sans vidéo) */
+    imageAlt?: string;
     tags: readonly string[];
   };
+  /** Libellés du lien externe quand ce n'est pas un site (ex. fiche Chrome Web Store) */
+  link?: { visit: string; live: string };
   idea: { paragraphs: readonly string[]; points: readonly string[] };
   features: { intro?: string; items: readonly { title: string; text: string }[] };
   tech: {

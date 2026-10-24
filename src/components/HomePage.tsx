@@ -8,7 +8,7 @@ import TrackCard from "@/components/TrackCard";
 import { getHome, getService, getUi } from "@/content";
 import { identity, links } from "@/lib/data";
 import { path, url, type Locale } from "@/lib/i18n";
-import { hostname } from "@/lib/projects";
+import { hostname, isProjectId, projectMeta } from "@/lib/projects";
 import { homeGraph } from "@/lib/seo";
 import { trackIds } from "@/lib/services";
 
@@ -157,10 +157,24 @@ export default function HomePage({ locale }: Props) {
           <ul className="mt-10 grid gap-6 sm:grid-cols-2">
             {home.projects.items.map((project, i) => {
               const service = getService(locale, project.service);
+              // Sans vidéo, un projet phare reprend la capture de sa page (même format 16:9 que les vignettes vidéo)
+              const image = !project.video && project.page && isProjectId(project.page) ? projectMeta[project.page].image : undefined;
               return (
                 <li key={project.title} style={stagger(i)} className="reveal card card-lift flex flex-col p-6">
                   {project.video && (
                     <ProjectVideo title={project.title} video={project.video} labels={ui.video} />
+                  )}
+                  {image && (
+                    // eslint-disable-next-line @next/next/no-img-element -- export statique, image déjà dimensionnée
+                    <img
+                      src={image.src}
+                      alt=""
+                      width={image.width}
+                      height={image.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="mb-5 aspect-video w-full rounded-[var(--radius-card)] border border-border object-cover"
+                    />
                   )}
                   <h3 className="text-xl font-semibold">
                     {project.page ? (

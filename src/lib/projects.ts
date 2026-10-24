@@ -4,7 +4,7 @@ import type { ServiceId } from "@/lib/services";
 import { videos, type ProjectVideo } from "@/lib/videos";
 
 /** Projets phares qui ont leur propre page (FR /projets/<slug>/, EN /en/projects/<slug>/). */
-export const projectIds = ["erdus-games", "cadence", "carnet"] as const;
+export const projectIds = ["erdus-games", "cadence", "carnet", "erdus-inspector"] as const;
 
 export type ProjectId = (typeof projectIds)[number];
 
@@ -15,9 +15,12 @@ export type ProjectMeta = {
   /** Offre associée (maillage interne et CTA de fin de page) */
   service: ServiceId;
   video?: ProjectVideo;
+  /** Capture du héro quand il n'y a pas de vidéo (public/projets/, nom versionné -vN : cache d'un an) */
+  image?: { src: string; width: number; height: number };
   /** Données structurées : sous-type de SoftwareApplication */
   schema: {
-    type: "WebApplication" | "MobileApplication";
+    /** SoftwareApplication pour une extension de navigateur (pas de sous-type schema.org) */
+    type: "WebApplication" | "MobileApplication" | "SoftwareApplication";
     applicationCategory: string;
     operatingSystem: string;
     /** Gratuité affirmée par le README du projet (offers à 0 €) */
@@ -60,6 +63,18 @@ export const projectMeta: Record<ProjectId, ProjectMeta> = {
       applicationCategory: "UtilitiesApplication",
       operatingSystem: "Web",
       free: false,
+    },
+  },
+  "erdus-inspector": {
+    id: "erdus-inspector",
+    url: links.inspector,
+    service: "creation-site-web",
+    image: { src: "/projets/erdus-inspector-v1.webp", width: 1280, height: 800 },
+    schema: {
+      type: "SoftwareApplication",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Chrome",
+      free: true,
     },
   },
 };

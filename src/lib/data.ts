@@ -30,6 +30,7 @@ export const links = {
   booking: "https://rdv.erdus.fr",
   portfolio3d: "https://3-d-portfolio-one-drab.vercel.app/",
   utlb: "https://op-utlb.fr/",
+  inspector: "https://chromewebstore.google.com/detail/echopckjjmccileiijiophjbankdnbdd",
 } as const;
 
 /** Technologies par groupe : les intitulés de groupe sont traduits dans le contenu. */
