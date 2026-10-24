@@ -69,6 +69,7 @@ export const projectMeta: Record<ProjectId, ProjectMeta> = {
     id: "erdus-inspector",
     url: links.inspector,
     service: "creation-site-web",
+    video: videos.inspector,
     image: { src: "/projets/erdus-inspector-v1.webp", width: 1280, height: 800 },
     schema: {
       type: "SoftwareApplication",

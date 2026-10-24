@@ -180,6 +180,16 @@ export const home: HomeContent = {
         url: links.inspector,
         service: "creation-site-web",
         page: "erdus-inspector",
+        video: videos.inspector,
+      },
+      {
+        title: "Épure",
+        description:
+          "Extension Chrome qui allège les pages : bannières de cookies refusées quand un bouton « Refuser » existe (jamais « Accepter »), popups de newsletter, bandeaux d'application et bulles de chat masqués, vidéos en lecture automatique stoppées, et un mode lecture. Aucune requête réseau, rien n'est collecté. JavaScript sans dépendance, Manifest V3.",
+        tags: ["Chrome Extension", "Vie privée", "JavaScript"],
+        url: null,
+        service: "creation-site-web",
+        video: videos.epure,
       },
       {
         title: "Erdus",
