@@ -179,6 +179,16 @@ export const home: HomeContent = {
         url: links.inspector,
         service: "creation-site-web",
         page: "erdus-inspector",
+        video: videos.inspector,
+      },
+      {
+        title: "Épure",
+        description:
+          "Chrome extension that declutters pages: cookie banners refused whenever a “Refuse” button exists (never “Accept”), newsletter popups, app banners and chat bubbles hidden, autoplaying videos stopped, plus a reading mode. No network requests, nothing collected. Dependency-free JavaScript, Manifest V3.",
+        tags: ["Chrome Extension", "Privacy", "JavaScript"],
+        url: null,
+        service: "creation-site-web",
+        video: videos.epure,
       },
       {
         title: "Erdus",

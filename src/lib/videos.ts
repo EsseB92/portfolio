@@ -23,6 +23,8 @@ export const videos = {
   notes: { file: "carnet-v1", seconds: 56, uploadDate: "2026-10-23" },
   portfolio: { file: "erdus-v1", seconds: 67, uploadDate: "2026-10-23" },
   utlb: { file: "observatoire-paysage-utlb-v1", seconds: 61, uploadDate: "2026-10-23" },
+  inspector: { file: "erdus-inspector-v1", seconds: 66, uploadDate: "2026-10-24" },
+  epure: { file: "epure-v1", seconds: 55, uploadDate: "2026-10-24" },
 } as const satisfies Record<string, ProjectVideo>;
 
 /** Chemins publics des fichiers d'une vidéo. */
